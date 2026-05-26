@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Editor
+.vscode/
+.idea/
+.claude/
+
+# Local-only design reference (kept on disk, not for repo distribution)
+trevizo_master_preview-V6.html
+TREVIZO_HANDOFF.md
+
+# OS-level temp
+*.swp
+*~
