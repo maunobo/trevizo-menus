@@ -298,19 +298,9 @@ def render_brand_block(cfg: dict, menu_en: Menu, menu_gr: Menu) -> str:
             f'<span class="lang-en">{en_html}</span>'
             f'<span class="lang-gr">{gr_html}</span>'
         )
-    # Per-menu subtitle (e.g. Food kitchen hours). Rendered small below the title.
-    subtitle_html = ""
-    if cfg["slug"] == "food":
-        subtitle_html = (
-            '<div class="title-subtitle">'
-            '<span class="lang-en">Kitchen open until 23:00</span>'
-            '<span class="lang-gr">Η κουζίνα λειτουργεί έως 23:00</span>'
-            "</div>"
-        )
     return (
         f'<div class="wordmark">T R E V I Z O</div>'
         f'<h1 class="{title_class}">{title_html}</h1>'
-        f'{subtitle_html}'
     )
 
 
@@ -452,6 +442,15 @@ def render_side(
             inner_parts.append(f'<div class="sections-wrap">{sections_html}</div>')
         else:
             inner_parts.append(sections_html)
+
+    # Kitchen hours — Food front only, sits just above the footer.
+    if cfg["slug"] == "food" and is_front:
+        inner_parts.append(
+            '<div class="kitchen-hours">'
+            '<span class="lang-en">Kitchen open until 23:00</span>'
+            '<span class="lang-gr">Η κουζίνα λειτουργεί έως 23:00</span>'
+            "</div>"
+        )
 
     # Footer
     inner_parts.append(render_footer(en_side, gr_side))
@@ -602,8 +601,9 @@ STYLES = """
   .title { font-family: 'Noto Serif Display', serif; font-weight: 900; font-style: italic; line-height: 1; text-align: center; letter-spacing: -0.01em; }
   .title-roman { font-style: normal; letter-spacing: -0.005em; line-height: 0.95; }
   .title-stacked { line-height: 0.95; }
-  /* Subtitle line under main title (e.g. Food kitchen hours). Small, italic, opacity-reduced. */
-  .title-subtitle { font-family: 'Archivo', sans-serif; font-weight: 400; font-style: italic; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.65; text-align: center; margin-top: 10px; }
+  /* Kitchen hours line — sits just above the footer on Food front. Mirrors the footer's styling
+     so the two read as a stacked block at the bottom of the page. */
+  .kitchen-hours { position: absolute; bottom: 36px; left: 30px; right: 30px; text-align: center; font-family: 'Archivo', sans-serif; font-weight: 400; font-style: italic; font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; }
 
   .col-header { display: flex; justify-content: flex-end; align-items: baseline; font-family: 'Archivo', sans-serif; font-weight: 500; font-size: 7px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.55; }
   .col-header span { padding-left: 0.8em; }
