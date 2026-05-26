@@ -338,6 +338,53 @@ def render_logo(mascot_class: str, logo_color: str) -> str:
     )
 
 
+# ─── Sticker variant overlays ───────────────────────────────────────────
+# Optional risograph sticker accents per menu/side. Hidden by default;
+# revealed when body.variant-stickers is set via the dev toggle.
+# Sizes/positions tuned to peek into negative space without competing with text.
+STICKER_OVERLAYS = {
+    # menu_slug: [ { side, file, style } ]
+    # Placements tuned to peek into negative space WITHOUT overlapping section content or titles.
+    "wines": [
+        {"side": "front", "file": "sticker-orange-slice.png",
+         "style": "top: 22px; left: 14px; width: 64px; transform: rotate(-12deg);"},
+        # Wines back: content fills the page (flex-centered Rosé + Champagne) — no safe spot, skip.
+    ],
+    "cocktails": [
+        {"side": "front", "file": "sticker-olive-pick.png",
+         "style": "top: 28px; right: 14px; width: 32px; transform: rotate(15deg);"},
+        # Cocktails back has a 28px gap between Signature Spritz and Signature Cocktails — too small for a sticker. Skip.
+    ],
+    "food": [
+        {"side": "front", "file": "sticker-basil.png",
+         "style": "top: 22px; right: 14px; width: 54px; transform: rotate(12deg);"},
+        # Food back: content-dense (Salads, Pinsa, Platter, Desserts). Skip to keep prices clean.
+    ],
+    "brunch": [
+        {"side": "front", "file": "sticker-orange-slice.png",
+         "style": "bottom: 100px; right: 14px; width: 56px; transform: rotate(8deg);"},
+        {"side": "back", "file": "sticker-olive-branch.png",
+         "style": "top: 18px; right: 14px; width: 70px; transform: rotate(15deg);"},
+    ],
+    "spirits": [
+        # Beverages front: content-dense, 2-col flow eats up corners. Skip.
+        # Spirits back: place olive branch in the empty right-column area below Whiskey, balancing the bottom-right mascot.
+        {"side": "back", "file": "sticker-olive-branch.png",
+         "style": "top: 78px; left: 28px; width: 64px; transform: rotate(-15deg);"},
+    ],
+}
+
+
+def render_stickers(slug: str, is_front: bool) -> str:
+    side = "front" if is_front else "back"
+    items = [s for s in STICKER_OVERLAYS.get(slug, []) if s["side"] == side]
+    return "".join(
+        f'<img class="sticker-overlay" src="assets/stickers/{s["file"]}" alt="" '
+        f'style="{s["style"]}">'
+        for s in items
+    )
+
+
 def render_footer(en_side: Side, gr_side: Side) -> str:
     if not en_side.footer:
         return ""
@@ -371,6 +418,9 @@ def render_side(
         parts.append(render_logo(cfg["front_mascot"], cfg["logo"]))
     if not is_front and cfg.get("back_mascot"):
         parts.append(render_logo(cfg["back_mascot"], cfg["logo"]))
+
+    # Sticker variant overlays (hidden unless body.variant-stickers is set)
+    parts.append(render_stickers(cfg["slug"], is_front))
 
     # Inner page
     inner_parts: list[str] = []
@@ -667,6 +717,13 @@ STYLES = """
      Toggle .colors-original on body reverts to the original dusk blue for A/B comparison. */
   .cocktails.page-outer { background: #B8481F; }
   body.colors-original .cocktails.page-outer { background: #2C5687; }
+
+  /* Sticker variant — risograph cutouts as accents in each menu's negative space.
+     Hidden by default; revealed via the "Sticker variant" toggle. */
+  .sticker-overlay { display: none; position: absolute; pointer-events: none; z-index: 1; transform-origin: center; }
+  body.variant-stickers .sticker-overlay { display: block; }
+  /* Soft drop shadow to lift the sticker off the menu, like a print-and-stick effect. */
+  body.variant-stickers .sticker-overlay { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.18)); }
   .cocktails .page { color: #F5EEDF; }
   .cocktails .page.front { padding-top: 150px; padding-bottom: 50px; display: flex; flex-direction: column; }
   .cocktails .page.front .title { font-size: 44px; margin-top: 8px; }
@@ -766,6 +823,12 @@ SCRIPT = """
     btn.classList.toggle('active');
   }
 
+  // Sticker variant: layer riso-style cutouts on each menu's negative space.
+  function toggleStickers(btn) {
+    document.body.classList.toggle('variant-stickers');
+    btn.classList.toggle('active');
+  }
+
   // Theme: dark (default) ⇄ light. Persisted via localStorage so the preference survives reload.
   const savedTheme = localStorage.getItem('trevizo-theme') || 'dark';
   if (savedTheme === 'light') document.body.dataset.theme = 'light';
@@ -820,6 +883,7 @@ def render_html(en: list[Menu], gr: list[Menu]) -> str:
     </div>
     <button class="theme-toggle" onclick="toggleTheme(this)" title="Toggle light/dark theme"><span data-theme-icon>🌙</span></button>
     <button onclick="toggleOriginalColors(this)" title="Compare new colors vs. original palette">Original colors</button>
+    <button onclick="toggleStickers(this)" title="Show risograph sticker accents on each menu">Sticker variant</button>
     <button class="dev-control" onclick="toggleGuides(this)">Show trim · margins · mascot zone</button>
     <button class="dev-control" onclick="toggleOriginalFonts(this)">Use Playfair Display (original)</button>
   </div>

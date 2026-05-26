@@ -5,6 +5,7 @@
 __pycache__/
 *.pyc
 .venv/
+venv/
 
 # Editor
 .vscode/
@@ -14,6 +15,8 @@ __pycache__/
 # Local-only design reference (kept on disk, not for repo distribution)
 trevizo_master_preview-V6.html
 TREVIZO_HANDOFF.md
+# One-time extraction script with hardcoded paths to local design assets
+extract_stickers.py
 
 # OS-level temp
 *.swp
