@@ -298,9 +298,19 @@ def render_brand_block(cfg: dict, menu_en: Menu, menu_gr: Menu) -> str:
             f'<span class="lang-en">{en_html}</span>'
             f'<span class="lang-gr">{gr_html}</span>'
         )
+    # Per-menu subtitle (e.g. Food kitchen hours). Rendered small below the title.
+    subtitle_html = ""
+    if cfg["slug"] == "food":
+        subtitle_html = (
+            '<div class="title-subtitle">'
+            '<span class="lang-en">Kitchen open until 23:00</span>'
+            '<span class="lang-gr">Η κουζίνα λειτουργεί έως 23:00</span>'
+            "</div>"
+        )
     return (
         f'<div class="wordmark">T R E V I Z O</div>'
         f'<h1 class="{title_class}">{title_html}</h1>'
+        f'{subtitle_html}'
     )
 
 
@@ -592,6 +602,8 @@ STYLES = """
   .title { font-family: 'Noto Serif Display', serif; font-weight: 900; font-style: italic; line-height: 1; text-align: center; letter-spacing: -0.01em; }
   .title-roman { font-style: normal; letter-spacing: -0.005em; line-height: 0.95; }
   .title-stacked { line-height: 0.95; }
+  /* Subtitle line under main title (e.g. Food kitchen hours). Small, italic, opacity-reduced. */
+  .title-subtitle { font-family: 'Archivo', sans-serif; font-weight: 400; font-style: italic; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.65; text-align: center; margin-top: 10px; }
 
   .col-header { display: flex; justify-content: flex-end; align-items: baseline; font-family: 'Archivo', sans-serif; font-weight: 500; font-size: 7px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.55; }
   .col-header span { padding-left: 0.8em; }
@@ -623,8 +635,10 @@ STYLES = """
   .spirits .page.front .col-2 { column-count: 2; column-gap: 20px; }
   .spirits .page.front .col-2 .section-header { column-span: all; -webkit-column-span: all; }
 
-  /* Brunch edge band — dusk blue (was vermilion). Takes the freed-up palette slot since Cocktails moved to orange. */
+  /* Brunch edge band — dusk blue (was vermilion). Takes the freed-up palette slot since Cocktails moved to orange.
+     Toggle .colors-original on body reverts to the original deeper vermilion. */
   .brunch-edge-band { position: absolute; top: 0; left: 0; bottom: 0; width: 40px; background: #2C5687; z-index: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  body.colors-original .brunch-edge-band { background: #C8362E; }
   .brunch-edge-band .vertical-text { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.32em; color: #F5EEDF; white-space: nowrap; transform: rotate(-90deg); transform-origin: center center; padding-left: 0.32em; }
 
   /* ───── Per-menu treatments ───── */
@@ -640,8 +654,10 @@ STYLES = """
   .wines .page.back .section + .section { margin-top: 28px; }
 
   /* Cocktails background: spritz orange (Aperol-inspired). Replaces dusk blue.
-     Passes WCAG AA contrast (~5.3:1) with cream #F5EEDF text. */
+     Passes WCAG AA contrast (~5.3:1) with cream #F5EEDF text.
+     Toggle .colors-original on body reverts to the original dusk blue for A/B comparison. */
   .cocktails.page-outer { background: #B8481F; }
+  body.colors-original .cocktails.page-outer { background: #2C5687; }
   .cocktails .page { color: #F5EEDF; }
   .cocktails .page.front { padding-top: 150px; padding-bottom: 50px; display: flex; flex-direction: column; }
   .cocktails .page.front .title { font-size: 44px; margin-top: 8px; }
@@ -735,6 +751,12 @@ SCRIPT = """
     btn.classList.toggle('active');
   }
 
+  // Color comparison: dusk blue Cocktails + vermilion Brunch ribbon (the original palette).
+  function toggleOriginalColors(btn) {
+    document.body.classList.toggle('colors-original');
+    btn.classList.toggle('active');
+  }
+
   // Theme: dark (default) ⇄ light. Persisted via localStorage so the preference survives reload.
   const savedTheme = localStorage.getItem('trevizo-theme') || 'dark';
   if (savedTheme === 'light') document.body.dataset.theme = 'light';
@@ -788,6 +810,7 @@ def render_html(en: list[Menu], gr: list[Menu]) -> str:
       <button data-lang-btn="gr" onclick="setLang('gr')"><span class="flag">🇬🇷</span> GR</button>
     </div>
     <button class="theme-toggle" onclick="toggleTheme(this)" title="Toggle light/dark theme"><span data-theme-icon>🌙</span></button>
+    <button onclick="toggleOriginalColors(this)" title="Compare new colors vs. original palette">Original colors</button>
     <button class="dev-control" onclick="toggleGuides(this)">Show trim · margins · mascot zone</button>
     <button class="dev-control" onclick="toggleOriginalFonts(this)">Use Playfair Display (original)</button>
   </div>
