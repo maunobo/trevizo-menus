@@ -537,17 +537,26 @@ STYLES = """
   /* Theme toggle button — small icon-only button. */
   .controls .theme-toggle { padding: 9px 14px; min-width: 40px; }
 
-  /* Mobile: stack controls vertically and let the lang-toggle span full width. */
+  /* Mobile: pack all visible controls into a single row + give menu cards visible breathing room. */
   @media (max-width: 640px) {
-    body { padding: 16px 12px 60px; }
-    .controls { flex-direction: column; align-items: stretch; gap: 8px; }
-    .controls .lang-toggle { display: flex; width: 100%; }
-    .controls .lang-toggle button { flex: 1; padding: 11px 14px; }
-    .controls > button { width: 100%; }
-    .top h1 { font-size: 24px; }
-    .row { margin-bottom: 32px; }
+    body { padding: 12px 18px 60px; }
+    .controls { flex-direction: row; flex-wrap: nowrap; gap: 6px; justify-content: center; align-items: center; }
+    .controls .lang-toggle { display: inline-flex; flex: 0 1 auto; width: auto; }
+    .controls .lang-toggle button { padding: 8px 12px; font-size: 10px; }
+    .controls .lang-toggle .flag { font-size: 13px; }
+    .controls > button { padding: 8px 10px; font-size: 10px; letter-spacing: 0.06em; }
+    .controls .theme-toggle { padding: 8px 10px; min-width: 38px; }
+    /* Designer-only tools are hidden on mobile — irrelevant for bistro preview. */
+    .controls .dev-control { display: none !important; }
+    .top { margin-bottom: 14px; }
+    .top h1 { font-size: 22px; }
+    .top p { font-size: 12px; }
+    .top .preview-note { font-size: 11px; padding: 10px 12px; min-height: 0; }
+    .row { margin-bottom: 36px; }
     .row-meta { display: none; }
-    .spread { gap: 16px; justify-content: center; }
+    /* Stack the two pages of each menu vertically with visible padding around so they don't kiss the viewport edge. */
+    .spread { flex-direction: column; align-items: center; gap: 22px; padding: 6px 4px; }
+    .page-wrap { max-width: 100%; }
   }
 
   /* Dev-only controls — hidden unless ?dev=1 */
