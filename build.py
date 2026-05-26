@@ -343,34 +343,41 @@ def render_logo(mascot_class: str, logo_color: str) -> str:
 # revealed when body.variant-stickers is set via the dev toggle.
 # Sizes/positions tuned to peek into negative space without competing with text.
 STICKER_OVERLAYS = {
-    # menu_slug: [ { side, file, style } ]
-    # Placements tuned to peek into negative space WITHOUT overlapping section content or titles.
+    # menu_slug: [ { side, file, style, replaces_mascot? } ]
+    # Placements peek into negative space WITHOUT overlapping section content or titles.
+    # Subject choices reflect each menu's content (Italian food → pizza/salami/bread; Spirits → bottle trio).
     "wines": [
+        # TODO: swap to grapes once a grapes sticker is provided. Orange slice is a placeholder.
         {"side": "front", "file": "sticker-orange-slice.png",
          "style": "top: 22px; left: 14px; width: 64px; transform: rotate(-12deg);"},
-        # Wines back: content fills the page (flex-centered Rosé + Champagne) — no safe spot, skip.
+        # Wines back: flex-centered Rosé + Champagne fill the page — skip.
     ],
     "cocktails": [
+        # TODO: swap to a martini-glass-with-olive sticker once provided. Olive pick is the closest stand-in.
         {"side": "front", "file": "sticker-olive-pick.png",
          "style": "top: 28px; right: 14px; width: 32px; transform: rotate(15deg);"},
-        # Cocktails back has a 28px gap between Signature Spritz and Signature Cocktails — too small for a sticker. Skip.
+        # Cocktails back: section gap is too narrow for a sticker. Skip.
     ],
     "food": [
-        {"side": "front", "file": "sticker-basil.png",
-         "style": "top: 22px; right: 14px; width: 54px; transform: rotate(12deg);"},
-        # Food back: content-dense (Salads, Pinsa, Platter, Desserts). Skip to keep prices clean.
+        {"side": "front", "file": "sticker-pizza-slice.png",
+         "style": "top: 22px; right: 14px; width: 70px; transform: rotate(10deg);"},
+        # Food back: Platter section gets the salami board as a contextual match.
+        {"side": "back", "file": "sticker-salami-board.png",
+         "style": "bottom: 18px; left: 14px; width: 80px; transform: rotate(-6deg);"},
     ],
     "brunch": [
-        {"side": "front", "file": "sticker-orange-slice.png",
-         "style": "bottom: 100px; right: 14px; width: 56px; transform: rotate(8deg);"},
+        # Italian Breads section gets the bread basket — direct content match.
+        {"side": "front", "file": "sticker-bread-basket.png",
+         "style": "bottom: 100px; right: 14px; width: 68px; transform: rotate(8deg);"},
         {"side": "back", "file": "sticker-olive-branch.png",
          "style": "top: 18px; right: 14px; width: 70px; transform: rotate(15deg);"},
     ],
     "spirits": [
-        # Beverages front: content-dense, 2-col flow eats up corners. Skip.
-        # Spirits back: place olive branch in the empty right-column area below Whiskey, balancing the bottom-right mascot.
-        {"side": "back", "file": "sticker-olive-branch.png",
-         "style": "top: 78px; left: 28px; width: 64px; transform: rotate(-15deg);"},
+        # Beverages front: TODO — needs cappuccino sticker (none in current asset library).
+        # Spirits back: 3 bottles (Gin/Vermouth/Bitter) REPLACES the corner mascot at the bistro's request.
+        {"side": "back", "file": "sticker-three-bottles.png",
+         "style": "bottom: 40px; right: 16px; width: 130px; transform: rotate(-4deg);",
+         "replaces_mascot": True},
     ],
 }
 
@@ -724,6 +731,8 @@ STYLES = """
   body.variant-stickers .sticker-overlay { display: block; }
   /* Soft drop shadow to lift the sticker off the menu, like a print-and-stick effect. */
   body.variant-stickers .sticker-overlay { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.18)); }
+  /* In sticker variant: some stickers replace the mascot in their slot — hide the mascot there. */
+  body.variant-stickers .spirits .page.back .logo-mascot.corner-mascot { display: none; }
   .cocktails .page { color: #F5EEDF; }
   .cocktails .page.front { padding-top: 150px; padding-bottom: 50px; display: flex; flex-direction: column; }
   .cocktails .page.front .title { font-size: 44px; margin-top: 8px; }
