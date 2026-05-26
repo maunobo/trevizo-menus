@@ -40,9 +40,9 @@ MENU_CONFIG = [
         "slug": "cocktails",
         "page_class": "a5 cocktails",
         "format": "A5",
-        "color_label": "dusk blue",
-        "meta_en": "A5 · dusk blue · brand top-center · back vertically centered",
-        "meta_gr": "A5 · μπλε λυκόφως · brand πάνω-κέντρο · πίσω κατακόρυφα κεντραρισμένη",
+        "color_label": "spritz orange",
+        "meta_en": "A5 · spritz orange · Aperol-inspired · brand top-center",
+        "meta_gr": "A5 · πορτοκαλί spritz · έμπνευση από Aperol · brand πάνω-κέντρο",
         "logo": "cream",
         "front_mascot": "front-mascot",
         "back_mascot": None,
@@ -68,9 +68,9 @@ MENU_CONFIG = [
         "slug": "brunch",
         "page_class": "a5 brunch",
         "format": "A5",
-        "color_label": "cream + vermilion edge band",
-        "meta_en": "A5 · cream paper · vermilion edge band w/ SAT·SUN·10:00—16:00",
-        "meta_gr": "A5 · κρεμ χαρτί · βερμιγιόν edge band με ΣΑΒ·ΚΥΡ·10:00—16:00",
+        "color_label": "cream + dusk blue edge band",
+        "meta_en": "A5 · cream paper · dusk blue edge band w/ SAT·SUN·10:00—16:00",
+        "meta_gr": "A5 · κρεμ χαρτί · μπλε edge band με ΣΑΒ·ΚΥΡ·10:00—16:00",
         "logo": "vermilion",
         "front_mascot": "front-mascot",
         "back_mascot": None,
@@ -485,8 +485,26 @@ def render_menu(idx: int, en_menu: Menu, gr_menu: Menu) -> str:
 # ─── Stylesheet (extracted from V6, plus EN/GR toggle additions) ────────
 STYLES = """
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { background: #0d0d0d; min-height: 100vh; font-family: 'Archivo', sans-serif; color: #ddd; }
+  /* Theme: dark by default; body[data-theme="light"] flips the preview chrome (menus themselves keep their flood colors). */
+  html, body { background: #0d0d0d; min-height: 100vh; font-family: 'Archivo', sans-serif; color: #ddd; transition: background-color 0.2s, color 0.2s; }
   body { padding: 32px 24px 80px; }
+
+  body[data-theme="light"] { background: #f4f1ea; color: #2a2724; }
+  body[data-theme="light"] .top h1 { color: #B8481F; }
+  body[data-theme="light"] .top p { color: #555; }
+  body[data-theme="light"] .top .tag { background: #ece8df; border-color: #d8d3c7; color: #6b6b6b; }
+  body[data-theme="light"] .top .preview-note { background: #ece8df; color: #4a463f; }
+  body[data-theme="light"] .top .preview-note strong { color: #B8481F; }
+  body[data-theme="light"] .controls { background: linear-gradient(to bottom, #f4f1ea 0%, #f4f1ea 60%, rgba(244,241,234,0.85) 100%); }
+  body[data-theme="light"] .controls button { color: #4a463f; border-color: #c8c2b3; }
+  body[data-theme="light"] .controls button:hover { color: #2a2724; border-color: #6b6b6b; }
+  body[data-theme="light"] .controls .lang-toggle { border-color: #c8c2b3; }
+  body[data-theme="light"] .row-header { border-left-color: #B8481F; }
+  body[data-theme="light"] .row-num { color: #B8481F; }
+  body[data-theme="light"] .row-title { color: #2a2724; }
+  body[data-theme="light"] .row-meta { color: #777; }
+  body[data-theme="light"] .page-label { color: #777; }
+  body[data-theme="light"] .page-outer { box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
 
   .top { max-width: 1500px; margin: 0 auto 24px; }
   .top h1 { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 900; font-size: 32px; color: #E63C2E; margin-bottom: 6px; letter-spacing: -0.01em; }
@@ -503,9 +521,25 @@ STYLES = """
   .controls button:hover { color: #fff; border-color: #888; }
   .controls button.active { background: #E63C2E; border-color: #E63C2E; color: #fff; }
   .controls .lang-toggle { display: inline-flex; border: 1px solid #444; border-radius: 999px; overflow: hidden; }
-  .controls .lang-toggle button { border: none; border-radius: 0; padding: 9px 18px; display: inline-flex; align-items: center; gap: 8px; }
+  .controls .lang-toggle button { border: none; border-radius: 0; padding: 9px 18px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
   .controls .lang-toggle button.active { background: #E63C2E; color: #fff; }
   .controls .lang-toggle .flag { font-size: 14px; line-height: 1; }
+
+  /* Theme toggle button — small icon-only button. */
+  .controls .theme-toggle { padding: 9px 14px; min-width: 40px; }
+
+  /* Mobile: stack controls vertically and let the lang-toggle span full width. */
+  @media (max-width: 640px) {
+    body { padding: 16px 12px 60px; }
+    .controls { flex-direction: column; align-items: stretch; gap: 8px; }
+    .controls .lang-toggle { display: flex; width: 100%; }
+    .controls .lang-toggle button { flex: 1; padding: 11px 14px; }
+    .controls > button { width: 100%; }
+    .top h1 { font-size: 24px; }
+    .row { margin-bottom: 32px; }
+    .row-meta { display: none; }
+    .spread { gap: 16px; justify-content: center; }
+  }
 
   /* Dev-only controls — hidden unless ?dev=1 */
   body:not([data-dev]) .dev-control { display: none; }
@@ -589,8 +623,8 @@ STYLES = """
   .spirits .page.front .col-2 { column-count: 2; column-gap: 20px; }
   .spirits .page.front .col-2 .section-header { column-span: all; -webkit-column-span: all; }
 
-  /* Brunch edge band */
-  .brunch-edge-band { position: absolute; top: 0; left: 0; bottom: 0; width: 40px; background: #C8362E; z-index: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  /* Brunch edge band — dusk blue (was vermilion). Takes the freed-up palette slot since Cocktails moved to orange. */
+  .brunch-edge-band { position: absolute; top: 0; left: 0; bottom: 0; width: 40px; background: #2C5687; z-index: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .brunch-edge-band .vertical-text { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.32em; color: #F5EEDF; white-space: nowrap; transform: rotate(-90deg); transform-origin: center center; padding-left: 0.32em; }
 
   /* ───── Per-menu treatments ───── */
@@ -605,7 +639,9 @@ STYLES = """
   .wines .page.back .section:first-of-type { margin-top: 0; }
   .wines .page.back .section + .section { margin-top: 28px; }
 
-  .cocktails.page-outer { background: #2C5687; }
+  /* Cocktails background: spritz orange (Aperol-inspired). Replaces dusk blue.
+     Passes WCAG AA contrast (~5.3:1) with cream #F5EEDF text. */
+  .cocktails.page-outer { background: #B8481F; }
   .cocktails .page { color: #F5EEDF; }
   .cocktails .page.front { padding-top: 150px; padding-bottom: 50px; display: flex; flex-direction: column; }
   .cocktails .page.front .title { font-size: 44px; margin-top: 8px; }
@@ -620,7 +656,8 @@ STYLES = """
   .food.page-outer { background: #F5EEDF; }
   .food .page { color: #5E2A2E; }
   .food .page.front { padding-top: 150px; padding-bottom: 50px; display: flex; flex-direction: column; }
-  .food .page.front .title { font-size: 26px; margin-top: 8px; line-height: 1; white-space: nowrap; }
+  /* Title is now single-word ("Food" / "Φαγητό") — restored full display size to match Wines/Brunch. */
+  .food .page.front .title { font-size: 50px; margin-top: 8px; line-height: 1; }
   .food .page.front .sections-wrap { flex: 1; display: flex; flex-direction: column; justify-content: center; }
   .food .page.front .sections-wrap .section:first-of-type { margin-top: 0; }
   .food .rule { background: #5E2A2E; }
@@ -697,6 +734,20 @@ SCRIPT = """
     document.body.classList.toggle('fonts-original');
     btn.classList.toggle('active');
   }
+
+  // Theme: dark (default) ⇄ light. Persisted via localStorage so the preference survives reload.
+  const savedTheme = localStorage.getItem('trevizo-theme') || 'dark';
+  if (savedTheme === 'light') document.body.dataset.theme = 'light';
+  document.querySelectorAll('[data-theme-icon]').forEach(el => {
+    el.textContent = savedTheme === 'light' ? '☀️' : '🌙';
+  });
+  function toggleTheme(btn) {
+    const next = document.body.dataset.theme === 'light' ? 'dark' : 'light';
+    if (next === 'light') document.body.dataset.theme = 'light';
+    else delete document.body.dataset.theme;
+    localStorage.setItem('trevizo-theme', next);
+    btn.querySelector('[data-theme-icon]').textContent = next === 'light' ? '☀️' : '🌙';
+  }
 """
 
 
@@ -736,6 +787,7 @@ def render_html(en: list[Menu], gr: list[Menu]) -> str:
       <button data-lang-btn="en" onclick="setLang('en')"><span class="flag">🇬🇧</span> EN</button>
       <button data-lang-btn="gr" onclick="setLang('gr')"><span class="flag">🇬🇷</span> GR</button>
     </div>
+    <button class="theme-toggle" onclick="toggleTheme(this)" title="Toggle light/dark theme"><span data-theme-icon>🌙</span></button>
     <button class="dev-control" onclick="toggleGuides(this)">Show trim · margins · mascot zone</button>
     <button class="dev-control" onclick="toggleOriginalFonts(this)">Use Playfair Display (original)</button>
   </div>

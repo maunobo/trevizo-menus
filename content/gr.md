@@ -87,7 +87,7 @@ Guilty Tai | 12 € | Kingston 62 Rum · Εσπεριδοειδή · Αμύγδ�
 
 ---
 
-# Menu: Aperitivo & Φαγητό
+# Menu: Φαγητό
 
 ## Side: Front {centered}
 

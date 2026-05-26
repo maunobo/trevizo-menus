@@ -97,7 +97,7 @@ Guilty Tai | 12 € | Kingston 62 Rum · Citrus · Almond · Orange Liqueur · B
 
 ---
 
-# Menu: Aperitivo & Food
+# Menu: Food
 
 ## Side: Front {centered}
 
