@@ -524,7 +524,9 @@ def render_side(
 
     return (
         f'<div class="page-wrap">'
+        f'<div class="card-scaler">'
         f'<div class="page-outer {cfg["page_class"]}">{"".join(parts)}</div>'
+        f"</div>"
         f'<div class="page-label">{page_label}</div>'
         f"</div>"
     )
@@ -602,6 +604,8 @@ STYLES = """
   @media (max-width: 640px) {
     html, body { overflow-x: hidden; }
     body { padding: 12px 18px 60px; }
+    /* Card scaler clips the scaled card's layout box to its visual (scaled) size — no overflow. */
+    .card-scaler { overflow: hidden; }
     .controls { flex-direction: row; flex-wrap: nowrap; gap: 6px; justify-content: center; align-items: center; }
     .controls .lang-toggle { display: inline-flex; flex: 0 1 auto; width: auto; }
     .controls .lang-toggle button { padding: 8px 12px; font-size: 10px; }
@@ -922,10 +926,23 @@ SCRIPT = """
   function fitMobileCards() {
     const mobile = window.matchMedia('(max-width: 640px)').matches;
     const avail = document.documentElement.clientWidth - 36; // side breathing room
-    document.querySelectorAll('.page-outer').forEach(card => {
-      if (!mobile) { card.style.zoom = ''; return; }
-      const w = card.classList.contains('a4') ? 518 : 370;
-      card.style.zoom = Math.min(1, avail / w).toFixed(4);
+    document.querySelectorAll('.card-scaler').forEach(scaler => {
+      const card = scaler.querySelector('.page-outer');
+      if (!card) return;
+      if (!mobile) {
+        scaler.style.width = scaler.style.height = '';
+        card.style.transform = card.style.transformOrigin = '';
+        return;
+      }
+      const isA4 = card.classList.contains('a4');
+      const w = isA4 ? 518 : 370, h = isA4 ? 728 : 518;
+      const scale = Math.min(1, avail / w);
+      // Size the scaler to the scaled card so layout reflows correctly; scale the card inside it.
+      // transform (unlike zoom) reliably scales the absolutely-positioned .page child on iOS Safari.
+      scaler.style.width = (w * scale).toFixed(1) + 'px';
+      scaler.style.height = (h * scale).toFixed(1) + 'px';
+      card.style.transformOrigin = 'top left';
+      card.style.transform = 'scale(' + scale.toFixed(4) + ')';
     });
   }
   window.addEventListener('resize', fitMobileCards);
