@@ -85,10 +85,6 @@ Bad Influence | 12 € | Wild Turkey 101 Bourbon · Hibiscus · Angostura Bitter
 Pomodorini & Mozzarella | 2,50 € | Stuffed Olives (2 pcs)
 Baked Focaccia | 2,50 € | Rosemary · Sea Salt (4 pcs)
 
-### Bruschetta
-Pomodoro {6 pcs} | 9 € | Pesto · Burrata · Pomodorini
-Parma {6 pcs} | 9 € | Prosciutto Parma · Pomodoro · Parmesan · Rocket · Truffle Oil
-
 ### Salads
 Burrata | 10 € | Burrata · Pomodorini · Fresh Basil · Balsamic Cream
 Il Giardino | 9 € | Mixed Leaves · Orange · Parmesan · Walnuts · Balsamic
@@ -97,6 +93,10 @@ Insalata di Fragole | 9 € | Prosciutto · Mixed Leaves · Strawberries · Gorg
 > Continued overleaf
 
 ## Side: Back
+
+### Bruschetta
+Pomodoro {6 pcs} | 9 € | Pesto · Burrata · Pomodorini
+Parma {6 pcs} | 9 € | Prosciutto Parma · Pomodoro · Parmesan · Rocket · Truffle Oil
 
 ### Pinsa Romana
 Burrata | 12 € | Salsa Pomodoro · Burrata · Pomodorini Tricolore · Fresh Basil

@@ -85,10 +85,6 @@ Bad Influence | 12 € | Wild Turkey 101 Bourbon · Ιβίσκος · Angostura 
 Pomodorini & Mozzarella | 2,50 € | Γεμιστές Ελιές (2 τεμ.)
 Baked Focaccia | 2,50 € | Δεντρολίβανο · Θαλασσινό Αλάτι (4 τεμ.)
 
-### Bruschetta
-Pomodoro {6 τεμ.} | 9 € | Pesto · Burrata · Pomodorini
-Parma {6 τεμ.} | 9 € | Prosciutto Parma · Pomodoro · Παρμεζάνα · Ρόκα · Λάδι Τρούφας
-
 ### Σαλάτες
 Burrata | 10 € | Burrata · Pomodorini · Φρέσκος Βασιλικός · Κρέμα Βαλσάμικου
 Il Giardino | 9 € | Ανάμεικτα Πράσινα Λαχανικά · Πορτοκάλι · Παρμεζάνα · Καρύδια · Βαλσάμικο
@@ -97,6 +93,10 @@ Insalata di Fragole | 9 € | Prosciutto · Ανάμεικτα Πράσινα Λ
 > Συνέχεια στην πίσω σελίδα
 
 ## Side: Back
+
+### Bruschetta
+Pomodoro {6 τεμ.} | 9 € | Pesto · Burrata · Pomodorini
+Parma {6 τεμ.} | 9 € | Prosciutto Parma · Pomodoro · Παρμεζάνα · Ρόκα · Λάδι Τρούφας
 
 ### Pinsa Romana
 Burrata | 12 € | Salsa Pomodoro · Burrata · Pomodorini Tricolore · Φρέσκος Βασιλικός
