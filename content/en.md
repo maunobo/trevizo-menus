@@ -115,7 +115,7 @@ Parma {6 pcs} | 9 € | Prosciutto Parma · Pomodoro · Parmesan · Rocket · Tr
 
 ### Salads
 Burrata | 9 € | Burrata · Pomodorini · Fresh Basil · Balsamic Cream
-Il Giardino | 9 € | Mixed Leaves · Orange · Parmesan · Walnuts · Balsamic
+Il Giardino | 9 € | Seasonal Mixed Greens · Orange · Parmesan · Walnuts · Balsamic
 
 ### Pinsa Romana
 Pomodoro & Burrata | 11 € | Salsa Pomodoro · Burrata · Pomodorini Tricolore · Fresh Basil
@@ -154,7 +154,7 @@ Focaccia Milano | 9 € | Salami Milano · Truffle Cream · Pecorino Romano · R
 
 ### Salads
 Burrata | 9 € | Burrata · Pomodorini · Fresh Basil · Balsamic Cream
-Il Giardino | 9 € | Mixed Leaves · Orange · Parmesan · Walnuts · Balsamic
+Il Giardino | 9 € | Seasonal Mixed Greens · Orange · Parmesan · Walnuts · Balsamic
 
 ### Pinsa
 Margherita | 10 € | Salsa Pomodoro · Mozzarella

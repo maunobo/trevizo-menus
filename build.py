@@ -669,12 +669,15 @@ STYLES = """
   body.text-extended .col-header { font-size: 8px; }
   /* A4 (Beverages & Beers / Spirits) has headroom — bump it to match the A5 menus' larger-text feel
      instead of the timid +5% it had before (which made it look smaller than the A5 cards). */
-  body.text-extended .a4 .item-name { font-size: 11px; }
-  body.text-extended .a4 .item-price { font-size: 11px; }
-  body.text-extended .a4 .item-desc { font-size: 9px; }
+  body.text-extended .a4 .item-name { font-size: 10px; }
+  body.text-extended .a4 .item-price { font-size: 10px; }
+  body.text-extended .a4 .item-desc { font-size: 8.5px; }
   body.text-extended .a4 .iced-tea-flavor .item-name { font-size: 8.5px; }
   body.text-extended .a4 .iced-tea-flavor .item-desc { font-size: 8px; }
-  body.text-extended .a4 .item { margin-bottom: 2.5px; }
+  /* A4 has plenty of headroom — keep its generous spacing in larger-text mode (don't let the
+     general .section/.item tightening above shrink it; that made Beverages/Spirits look cramped). */
+  body.text-extended .a4 .item { margin-bottom: 5px; }
+  body.text-extended .a4 .section { margin-top: 13px; }
   /* Food back is the densest A5 page (Bruschetta + Pinsa + Platter + Desserts) — tighten it further. */
   body.text-extended .food .page.back .item { margin-bottom: 2.5px; }
   body.text-extended .food .page.back .section { margin-top: 8px; }

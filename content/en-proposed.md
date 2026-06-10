@@ -87,8 +87,8 @@ Baked Focaccia | 2,50 € | Rosemary · Sea Salt (4 pcs)
 
 ### Salads
 Burrata | 10 € | Burrata · Pomodorini · Fresh Basil · Balsamic Cream
-Il Giardino | 9 € | Mixed Leaves · Orange · Parmesan · Walnuts · Balsamic
-Insalata di Fragole | 9 € | Prosciutto · Mixed Leaves · Strawberries · Gorgonzola · Strawberry Vinaigrette · Walnuts
+Il Giardino | 9 € | Seasonal Mixed Greens · Orange · Parmesan · Walnuts · Balsamic
+Insalata di Fragole | 9 € | Prosciutto · Seasonal Mixed Greens · Strawberries · Gorgonzola · Strawberry Vinaigrette · Walnuts
 
 > Continued overleaf
 
@@ -132,8 +132,8 @@ Focaccia Milano | 9 € | Salami Milano · Pomodoro · Truffle Cream · Pecorino
 
 ### Salads
 Burrata | 10 € | Burrata · Pomodorini · Fresh Basil · Balsamic Cream
-Il Giardino | 9 € | Mixed Leaves · Orange · Parmesan · Walnuts · Balsamic
-Insalata di Fragole | 9 € | Prosciutto · Mixed Leaves · Strawberries · Gorgonzola · Strawberry Vinaigrette · Walnuts
+Il Giardino | 9 € | Seasonal Mixed Greens · Orange · Parmesan · Walnuts · Balsamic
+Insalata di Fragole | 9 € | Prosciutto · Seasonal Mixed Greens · Strawberries · Gorgonzola · Strawberry Vinaigrette · Walnuts
 
 ### Pinsa
 Margherita | 10 € | Salsa Pomodoro · Mozzarella
