@@ -600,6 +600,7 @@ STYLES = """
 
   /* Mobile: pack all visible controls into a single row + give menu cards visible breathing room. */
   @media (max-width: 640px) {
+    html, body { overflow-x: hidden; }
     body { padding: 12px 18px 60px; }
     .controls { flex-direction: row; flex-wrap: nowrap; gap: 6px; justify-content: center; align-items: center; }
     .controls .lang-toggle { display: inline-flex; flex: 0 1 auto; width: auto; }
@@ -910,6 +911,23 @@ SCRIPT = """
     localStorage.setItem('trevizo-theme', next);
     btn.querySelector('[data-theme-icon]').textContent = next === 'light' ? '☀️' : '🌙';
   }
+
+  // Mobile fit: the menu cards have fixed pixel widths (A5 370px, A4 518px) that overflow a phone
+  // viewport, exposing the page background beyond the card. Scale each card down with `zoom` (which,
+  // unlike transform, also shrinks the layout box so there's no horizontal overflow and the page-label
+  // sits flush below). Cards stay centered with breathing room via the mobile .spread flex centering.
+  function fitMobileCards() {
+    const mobile = window.matchMedia('(max-width: 640px)').matches;
+    const avail = document.documentElement.clientWidth - 36; // side breathing room
+    document.querySelectorAll('.page-outer').forEach(card => {
+      if (!mobile) { card.style.zoom = ''; return; }
+      const w = card.classList.contains('a4') ? 518 : 370;
+      card.style.zoom = Math.min(1, avail / w).toFixed(4);
+    });
+  }
+  window.addEventListener('resize', fitMobileCards);
+  window.addEventListener('orientationchange', fitMobileCards);
+  fitMobileCards();
 """
 
 
@@ -940,7 +958,7 @@ def render_html(
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Archivo+Black&family=Noto+Serif+Display:ital,wght@0,700;0,900;1,700;1,900&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
   <style>{STYLES}</style>
 </head>
-<body data-lang="en">
+<body data-lang="en" class="revisions-on">
   <div class="top">
     <h1>Trevizo · Menu Preview</h1>
     <p>
@@ -963,8 +981,8 @@ def render_html(
       <button data-lang-btn="gr" onclick="setLang('gr')"><span class="flag">🇬🇷</span> GR</button>
     </div>
     <button class="theme-toggle" onclick="toggleTheme(this)" title="Toggle light/dark theme"><span data-theme-icon>🌙</span></button>
-    <button onclick="toggleOriginalColors(this)" title="Compare new colors vs. original palette">Original colors</button>
-    <button onclick="toggleRevisions(this)" title="Preview the proposed menu revisions (2026-05-26)">Show proposed revisions</button>
+    <button class="dev-control" onclick="toggleOriginalColors(this)" title="Compare new colors vs. original palette">Original colors</button>
+    <button class="dev-control active" onclick="toggleRevisions(this)" title="Toggle between the proposed (default) and original menu content">Proposed ⇄ original</button>
     <button onclick="toggleExtended(this)" title="Preview larger product text for A5 print">Larger text</button>
     <button class="dev-control" onclick="toggleStickers(this)" title="Show risograph sticker accents on each menu">Sticker variant</button>
     <button class="dev-control" onclick="toggleGuides(this)">Show trim · margins · mascot zone</button>
