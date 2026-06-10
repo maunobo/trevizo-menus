@@ -82,7 +82,7 @@ Crodino Spritz {non-alcoholic} | 8 € | Crodino 0% Alcohol · Soda Water
 Pink Spritz | 9 € | Lillet Rose Aperitif · Pink Grapefruit Soda
 Velvet Highball | 10 € | Banana-Infused Whiskey · Tonka · Melon Soda
 Fragola Spritz | 11 € | Cinzano Prosecco · Elderflower · Campari · Sartì Rosa · Strawberry Soda
-Sole di Sicilia | 10 € | Aperol · Mandarin · Mango · Cinnamon · Soda Water
+Sole di Sicilia | 10 € | Aperol · Mandarin · Cinnamon · Soda Water
 Limone Breeze | 11 € | Limoncello · Cinzano Prosecco · Cucumber · Ginger Beer
 Negroni di Trevizo | 12 € | Beckett's London Dry Gin · Campari · Basil-Infused Vermouth Rosso · Shiitake
 

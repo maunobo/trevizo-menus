@@ -72,7 +72,7 @@ Crodino Spritz {χωρίς αλκοόλ} | 8 € | Crodino 0% Αλκοόλ · Σ
 Pink Spritz | 9 € | Lillet Rose Aperitif · Σόδα Pink Grapefruit
 Velvet Highball | 10 € | Ουίσκι με Μπανάνα · Tonka · Σόδα Πεπόνι
 Fragola Spritz | 11 € | Cinzano Prosecco · Elderflower · Campari · Sartì Rosa · Σόδα Φράουλα
-Sole di Sicilia | 10 € | Aperol · Μανταρίνι · Μάνγκο · Κανέλα · Σόδα
+Sole di Sicilia | 10 € | Aperol · Μανταρίνι · Κανέλα · Σόδα
 Limone Breeze | 11 € | Limoncello · Cinzano Prosecco · Αγγούρι · Ginger Beer
 Negroni di Trevizo | 12 € | Beckett's London Dry Gin · Campari · Vermouth Rosso με Βασιλικό · Shiitake
 
