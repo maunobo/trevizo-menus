@@ -71,7 +71,7 @@ Crodino Spritz {χωρίς αλκοόλ} | 8 € | Crodino 0% Αλκοόλ · Σ
 ### Signature Spritz
 Pink Spritz | 9 € | Lillet Rose Aperitif · Σόδα Pink Grapefruit
 Velvet Highball | 10 € | Ουίσκι με Μπανάνα · Tonka · Σόδα Πεπόνι
-Fragola Spritz | 11 € | Cinzano Prosecco · Σαμπούκος · Campari · Sartì Rosa · Σόδα Φράουλα
+Fragola Spritz | 11 € | Cinzano Prosecco · Elderflower · Campari · Sartì Rosa · Σόδα Φράουλα
 Sole di Sicilia | 10 € | Aperol · Μανταρίνι · Μάνγκο · Κανέλα · Σόδα
 Limone Breeze | 11 € | Limoncello · Cinzano Prosecco · Αγγούρι · Ginger Beer
 Negroni di Trevizo | 12 € | Beckett's London Dry Gin · Campari · Vermouth Rosso με Βασιλικό · Shiitake
@@ -79,7 +79,7 @@ Negroni di Trevizo | 12 € | Beckett's London Dry Gin · Campari · Vermouth Ro
 ### Signature Cocktails
 Mango Affair | 10 € | Beckett's London Dry Gin · Μάνγκο · Τζίντζερ · Λεμόνι
 Drama Queen | 10 € | Skyy Vodka · Passion Fruit · Αλμυρή Καραμέλα · Εσπεριδοειδή
-Squeeze My Piña | 11 € | Espolòn Blanco · Ανανάς · Πικάντικη Αγαύη · Λάιμ
+Squeeze My Piña | 11 € | Espolòn Blanco · Ανανάς · Πικάντικη Αγαύη · Lime
 Bad Influence | 11 € | Wild Turkey 101 Bourbon · Ιβίσκος · Angostura Bitters · Πορτοκάλι · Λεμόνι · Αφρός
 Guilty Tai | 12 € | Kingston 62 Rum · Εσπεριδοειδή · Αμύγδαλο · Λικέρ Πορτοκαλιού · Bitters · Λευκή Σοκολάτα
 
