@@ -15,6 +15,9 @@ from typing import Optional
 ROOT = Path(__file__).resolve().parent
 CONTENT_EN = ROOT / "content" / "en.md"
 CONTENT_GR = ROOT / "content" / "gr.md"
+# Optional: if these exist, build also embeds them under a "Show proposed revisions" toggle.
+CONTENT_EN_PROPOSED = ROOT / "content" / "en-proposed.md"
+CONTENT_GR_PROPOSED = ROOT / "content" / "gr-proposed.md"
 OUTPUT = ROOT / "index.html"
 
 # ─── Per-menu visual config ──────────────────────────────────────────────
@@ -631,6 +634,20 @@ STYLES = """
     font-family: 'Playfair Display', serif !important;
   }
 
+  /* Revisions toggle: swap which content set is visible. Both sets are rendered at build time;
+     CSS just controls which is shown. */
+  [data-revision="proposed"] { display: none; }
+  body.revisions-on [data-revision="current"] { display: none; }
+  body.revisions-on [data-revision="proposed"] { display: block; }
+
+  /* Cocktails proposed-only sizing: title smaller, wordmark larger, section headers larger. */
+  body.revisions-on [data-revision="proposed"] .cocktails .wordmark { font-size: 14px; letter-spacing: 0.5em; padding-left: 0.5em; }
+  body.revisions-on [data-revision="proposed"] .cocktails .page.front .title { font-size: 32px; }
+  body.revisions-on [data-revision="proposed"] .cocktails .section-header { font-size: 16px; }
+
+  /* "Wine List" / "Λίστα Κρασιών" is wider than "Wines" / "Κρασιά" — scale down so it fits A5 width. */
+  body.revisions-on [data-revision="proposed"] .wines .title { font-size: 36px; }
+
   .row { max-width: 1500px; margin: 0 auto 50px; }
   .row-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 18px; padding: 6px 0 6px 14px; border-left: 3px solid #E63C2E; }
   .row-num { font-family: 'Archivo', monospace; font-size: 13px; color: #E63C2E; letter-spacing: 0.2em; font-weight: 600; }
@@ -832,6 +849,12 @@ SCRIPT = """
     btn.classList.toggle('active');
   }
 
+  // Proposed revisions: swaps the rendered content from `en/gr.md` to `en/gr-proposed.md` rendering.
+  function toggleRevisions(btn) {
+    document.body.classList.toggle('revisions-on');
+    btn.classList.toggle('active');
+  }
+
   // Sticker variant: layer riso-style cutouts on each menu's negative space.
   function toggleStickers(btn) {
     document.body.classList.toggle('variant-stickers');
@@ -854,8 +877,21 @@ SCRIPT = """
 """
 
 
-def render_html(en: list[Menu], gr: list[Menu]) -> str:
-    menu_rows = "\n".join(render_menu(i, em, gm) for i, (em, gm) in enumerate(zip(en, gr)))
+def render_html(
+    en: list[Menu], gr: list[Menu],
+    en_proposed: Optional[list[Menu]] = None,
+    gr_proposed: Optional[list[Menu]] = None,
+) -> str:
+    current_rows = "\n".join(render_menu(i, em, gm) for i, (em, gm) in enumerate(zip(en, gr)))
+    proposed_rows = ""
+    if en_proposed and gr_proposed:
+        proposed_rows = "\n".join(
+            render_menu(i, em, gm) for i, (em, gm) in enumerate(zip(en_proposed, gr_proposed))
+        )
+    menu_rows = (
+        f'<div data-revision="current">{current_rows}</div>'
+        + (f'<div data-revision="proposed">{proposed_rows}</div>' if proposed_rows else "")
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -892,6 +928,7 @@ def render_html(en: list[Menu], gr: list[Menu]) -> str:
     </div>
     <button class="theme-toggle" onclick="toggleTheme(this)" title="Toggle light/dark theme"><span data-theme-icon>🌙</span></button>
     <button onclick="toggleOriginalColors(this)" title="Compare new colors vs. original palette">Original colors</button>
+    <button onclick="toggleRevisions(this)" title="Preview the proposed menu revisions (2026-05-26)">Show proposed revisions</button>
     <button class="dev-control" onclick="toggleStickers(this)" title="Show risograph sticker accents on each menu">Sticker variant</button>
     <button class="dev-control" onclick="toggleGuides(this)">Show trim · margins · mascot zone</button>
     <button class="dev-control" onclick="toggleOriginalFonts(this)">Use Playfair Display (original)</button>
@@ -920,7 +957,16 @@ def main() -> int:
     validate(en, gr)
     print("validated: structural parity OK")
 
-    html = render_html(en, gr)
+    en_proposed = None
+    gr_proposed = None
+    if CONTENT_EN_PROPOSED.exists() and CONTENT_GR_PROPOSED.exists():
+        en_proposed = parse(CONTENT_EN_PROPOSED.read_text(encoding="utf-8"))
+        gr_proposed = parse(CONTENT_GR_PROPOSED.read_text(encoding="utf-8"))
+        print(f"parsed proposed: {len(en_proposed)} menus (EN), {len(gr_proposed)} menus (GR)")
+        validate(en_proposed, gr_proposed)
+        print("validated: proposed parity OK")
+
+    html = render_html(en, gr, en_proposed, gr_proposed)
     OUTPUT.write_text(html, encoding="utf-8")
     print(f"wrote: {OUTPUT} ({len(html):,} bytes)")
     return 0
