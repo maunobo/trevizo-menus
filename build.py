@@ -288,9 +288,10 @@ def render_brand_block(cfg: dict, menu_en: Menu, menu_gr: Menu) -> str:
     title_en = menu_en.name
     title_gr = menu_gr.name
     if cfg["slug"] == "spirits":
-        # Front title is "Beverages & Beer" (A4-front); back title is "Spirits"/"Ποτά" (handled separately).
-        en_html = "Beverages &amp; Beer"
-        gr_html = "Ροφήματα &amp; Μπύρες"
+        # Front title = the part of the menu name before "/" (e.g. "Beverages & Beers");
+        # back title ("Spirits"/"Αποστάγματα") is handled separately. Break into two lines at the "&".
+        en_html = escape(title_en.split("/")[0].strip()).replace(" &amp; ", "<br>&amp; ")
+        gr_html = escape(title_gr.split("/")[0].strip()).replace(" &amp; ", "<br>&amp; ")
     else:
         en_html = escape(title_en)
         gr_html = escape(title_gr)
@@ -640,13 +641,25 @@ STYLES = """
   body.revisions-on [data-revision="current"] { display: none; }
   body.revisions-on [data-revision="proposed"] { display: block; }
 
-  /* Cocktails proposed-only sizing: title smaller, wordmark larger, section headers larger. */
-  body.revisions-on [data-revision="proposed"] .cocktails .wordmark { font-size: 14px; letter-spacing: 0.5em; padding-left: 0.5em; }
-  body.revisions-on [data-revision="proposed"] .cocktails .page.front .title { font-size: 32px; }
-  body.revisions-on [data-revision="proposed"] .cocktails .section-header { font-size: 16px; }
-
-  /* "Wine List" / "Λίστα Κρασιών" is wider than "Wines" / "Κρασιά" — scale down so it fits A5 width. */
-  body.revisions-on [data-revision="proposed"] .wines .title { font-size: 36px; }
+  /* PROPOSED revision — global header treatment: bigger TREVIZO wordmark, smaller menu titles, across every menu. */
+  body.revisions-on [data-revision="proposed"] .wordmark { font-size: 14px; letter-spacing: 0.5em; padding-left: 0.5em; }
+  body.revisions-on [data-revision="proposed"] .wines .title { font-size: 32px; }
+  body.revisions-on [data-revision="proposed"] .cocktails .page.front .title { font-size: 36px; }
+  body.revisions-on [data-revision="proposed"] .food .page.front .title { font-size: 40px; }
+  body.revisions-on [data-revision="proposed"] .brunch .page.front .title { font-size: 42px; }
+  body.revisions-on [data-revision="proposed"] .spirits .page.front .title { font-size: 28px; }
+  body.revisions-on [data-revision="proposed"] .spirits .page.back .title { font-size: 40px; }
+  /* PROPOSED Food front now carries 3 sections (Salads moved here). Top-align + a smaller, higher mascot
+     and tighter spacing so 7 items + kitchen-hours + footer all fit on one A5 without collisions. */
+  body.revisions-on [data-revision="proposed"] .food .front-mascot { width: 62px; height: 79px; top: 12px; }
+  body.revisions-on [data-revision="proposed"] .food .page.front { padding-top: 88px; }
+  body.revisions-on [data-revision="proposed"] .food .page.front .title { font-size: 32px; }
+  body.revisions-on [data-revision="proposed"] .food .page.front .sections-wrap { justify-content: flex-start; }
+  body.revisions-on [data-revision="proposed"] .food .page.front .section { margin-top: 10px; }
+  body.revisions-on [data-revision="proposed"] .food .page.front .section:first-of-type { margin-top: 12px; }
+  body.revisions-on [data-revision="proposed"] .food .page.front .item { margin-bottom: 3px; }
+  body.revisions-on [data-revision="proposed"] .food .page.front .kitchen-hours { bottom: 28px; }
+  body.revisions-on [data-revision="proposed"] .food .page.front .footer { bottom: 14px; }
 
   .row { max-width: 1500px; margin: 0 auto 50px; }
   .row-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 18px; padding: 6px 0 6px 14px; border-left: 3px solid #E63C2E; }

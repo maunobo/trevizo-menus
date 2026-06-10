@@ -43,11 +43,11 @@ Veuve Clicquot Rosé Brut | — / 240 € | Pinot Noir · Chardonnay · Meunier 
 
 ---
 
-# Menu: Classic Spritz
+# Menu: Cocktails
 
 ## Side: Front
 
-### Aperitivo Spritz
+### Aperitivo
 Aperol Spritz | 9 € | Aperol · Prosecco · Σόδα
 Campari Spritz | 10 € | Campari · Prosecco · Σόδα
 Americano | 9 € | Campari · Del Professore Vermouth Rosso · Σόδα
@@ -89,17 +89,17 @@ Baked Focaccia | 2,50 € | Δεντρολίβανο · Θαλασσινό Αλ�
 Pomodoro {6 τεμ.} | 9 € | Pesto · Burrata · Pomodorini
 Parma {6 τεμ.} | 9 € | Prosciutto Parma · Pomodoro · Παρμεζάνα · Ρόκα · Λάδι Τρούφας
 
+### Σαλάτες
+Burrata | 10 € | Burrata · Pomodorini · Φρέσκος Βασιλικός · Κρέμα Βαλσάμικου
+Il Giardino | 9 € | Ανάμεικτα Πράσινα Λαχανικά · Πορτοκάλι · Παρμεζάνα · Καρύδια · Βαλσάμικο
+Insalata di Fragole | 9 € | Prosciutto · Ανάμεικτα Πράσινα Λαχανικά · Φράουλες · Gorgonzola · Vinaigrette Φράουλας · Καρύδια
+
 > Συνέχεια στην πίσω σελίδα
 
 ## Side: Back
 
-### Σαλάτες
-Burrata | 10 € | Burrata · Pomodorini · Φρέσκος Βασιλικός · Κρέμα Βαλσάμικου
-Il Giardino | 9 € | Ανάμεικτα Πράσινα · Πορτοκάλι · Παρμεζάνα · Καρύδια · Βαλσάμικο
-Insalata di Fragole | 9 € | Prosciutto · Ανάμεικτα Πράσινα · Φράουλες · Gorgonzola · Vinaigrette Φράουλας · Καρύδια
-
 ### Pinsa Romana
-Burrata | 12 € | Burrata · Pomodorini Tricolore · Φρέσκος Βασιλικός
+Burrata | 12 € | Salsa Pomodoro · Burrata · Pomodorini Tricolore · Φρέσκος Βασιλικός
 Prosciutto | 12 € | Salsa Pomodoro · Prosciutto Parma · Mozzarella · Ρόκα · Λάδι Τρούφας
 Dante Inferno | 12 € | Salsa Pomodoro Piccante · Spianata Romana · Mozzarella
 Tartufo | 12 € | Κρέμα Τρούφας · Mozzarella · Porcini · Παρμεζάνα · Λάδι Τρούφας
@@ -132,8 +132,8 @@ Focaccia Milano | 9 € | Salami Milano · Pomodoro · Κρέμα Τρούφας
 
 ### Σαλάτες
 Burrata | 10 € | Burrata · Pomodorini · Φρέσκος Βασιλικός · Κρέμα Βαλσάμικου
-Il Giardino | 9 € | Ανάμεικτα Πράσινα · Πορτοκάλι · Παρμεζάνα · Καρύδια · Βαλσάμικο
-Insalata di Fragole | 9 € | Prosciutto · Ανάμεικτα Πράσινα · Φράουλες · Gorgonzola · Vinaigrette Φράουλας · Καρύδια
+Il Giardino | 9 € | Ανάμεικτα Πράσινα Λαχανικά · Πορτοκάλι · Παρμεζάνα · Καρύδια · Βαλσάμικο
+Insalata di Fragole | 9 € | Prosciutto · Ανάμεικτα Πράσινα Λαχανικά · Φράουλες · Gorgonzola · Vinaigrette Φράουλας · Καρύδια
 
 ### Pinsa
 Margherita | 10 € | Salsa Pomodoro · Mozzarella

@@ -43,11 +43,11 @@ Veuve Clicquot Rosé Brut | — / 240 € | Pinot Noir · Chardonnay · Meunier 
 
 ---
 
-# Menu: Classic Spritz
+# Menu: Cocktails
 
 ## Side: Front
 
-### Aperitivo Spritz
+### Aperitivo
 Aperol Spritz | 9 € | Aperol · Prosecco · Soda
 Campari Spritz | 10 € | Campari · Prosecco · Soda
 Americano | 9 € | Campari · Del Professore Vermouth Rosso · Soda
@@ -89,17 +89,17 @@ Baked Focaccia | 2,50 € | Rosemary · Sea Salt (4 pcs)
 Pomodoro {6 pcs} | 9 € | Pesto · Burrata · Pomodorini
 Parma {6 pcs} | 9 € | Prosciutto Parma · Pomodoro · Parmesan · Rocket · Truffle Oil
 
-> Continued overleaf
-
-## Side: Back
-
 ### Salads
 Burrata | 10 € | Burrata · Pomodorini · Fresh Basil · Balsamic Cream
 Il Giardino | 9 € | Mixed Leaves · Orange · Parmesan · Walnuts · Balsamic
 Insalata di Fragole | 9 € | Prosciutto · Mixed Leaves · Strawberries · Gorgonzola · Strawberry Vinaigrette · Walnuts
 
+> Continued overleaf
+
+## Side: Back
+
 ### Pinsa Romana
-Burrata | 12 € | Burrata · Pomodorini Tricolore · Fresh Basil
+Burrata | 12 € | Salsa Pomodoro · Burrata · Pomodorini Tricolore · Fresh Basil
 Prosciutto | 12 € | Salsa Pomodoro · Prosciutto Parma · Mozzarella · Rocket · Truffle Oil
 Dante Inferno | 12 € | Salsa Pomodoro Piccante · Spianata Romana · Mozzarella
 Tartufo | 12 € | Truffle Cream · Mozzarella · Porcini · Parmesan · Truffle Oil
