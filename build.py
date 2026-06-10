@@ -652,6 +652,28 @@ STYLES = """
   /* PROPOSED Food front carries 2 sections (Wine Sides + Salads; Bruschetta moved to the back) —
      uses the default centered food-front treatment, no overrides needed. */
 
+  /* PROPOSED: category/section headers (White, Red, Aperitivo, Coffee, Gin, …) slightly larger on every menu. */
+  body.revisions-on [data-revision="proposed"] .section-header { font-size: 15px; }
+  body.revisions-on [data-revision="proposed"] .a4 .section-header { font-size: 14.5px; }
+
+  /* "Larger text" toggle — bumps product item text ~10% for a more generous A5 print read.
+     Inter-item spacing is tightened so the densest pages still fit their fixed page height. */
+  body.text-extended .item-name { font-size: 10.5px; }
+  body.text-extended .item-price { font-size: 10.5px; }
+  body.text-extended .item-desc { font-size: 8.5px; line-height: 1.22; }
+  body.text-extended .item-region { font-size: 8.5px; line-height: 1.22; }
+  body.text-extended .item { margin-bottom: 4px; }
+  body.text-extended .section { margin-top: 10px; }
+  body.text-extended .section-header { margin-bottom: 3px; }
+  body.text-extended .col-header { font-size: 8px; }
+  body.text-extended .a4 .item-name { font-size: 10px; }
+  body.text-extended .a4 .item-price { font-size: 10px; }
+  body.text-extended .a4 .item-desc { font-size: 8px; }
+  body.text-extended .a4 .item { margin-bottom: 2px; }
+  /* Food back is the densest A5 page (Bruschetta + Pinsa + Platter + Desserts) — tighten it further. */
+  body.text-extended .food .page.back .item { margin-bottom: 2.5px; }
+  body.text-extended .food .page.back .section { margin-top: 8px; }
+
   .row { max-width: 1500px; margin: 0 auto 50px; }
   .row-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 18px; padding: 6px 0 6px 14px; border-left: 3px solid #E63C2E; }
   .row-num { font-family: 'Archivo', monospace; font-size: 13px; color: #E63C2E; letter-spacing: 0.2em; font-weight: 600; }
@@ -859,6 +881,12 @@ SCRIPT = """
     btn.classList.toggle('active');
   }
 
+  // Larger text: bumps product item text for evaluating A5 print legibility.
+  function toggleExtended(btn) {
+    document.body.classList.toggle('text-extended');
+    btn.classList.toggle('active');
+  }
+
   // Sticker variant: layer riso-style cutouts on each menu's negative space.
   function toggleStickers(btn) {
     document.body.classList.toggle('variant-stickers');
@@ -933,6 +961,7 @@ def render_html(
     <button class="theme-toggle" onclick="toggleTheme(this)" title="Toggle light/dark theme"><span data-theme-icon>🌙</span></button>
     <button onclick="toggleOriginalColors(this)" title="Compare new colors vs. original palette">Original colors</button>
     <button onclick="toggleRevisions(this)" title="Preview the proposed menu revisions (2026-05-26)">Show proposed revisions</button>
+    <button onclick="toggleExtended(this)" title="Preview larger product text for A5 print">Larger text</button>
     <button class="dev-control" onclick="toggleStickers(this)" title="Show risograph sticker accents on each menu">Sticker variant</button>
     <button class="dev-control" onclick="toggleGuides(this)">Show trim · margins · mascot zone</button>
     <button class="dev-control" onclick="toggleOriginalFonts(this)">Use Playfair Display (original)</button>
