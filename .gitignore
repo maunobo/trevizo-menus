@@ -23,3 +23,7 @@ extract_stickers.py
 # OS-level temp
 *.swp
 *~
+
+# Generated print artifacts (regenerate with print_export.py + render_pdfs.sh)
+print/
+pdf/
