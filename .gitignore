@@ -27,3 +27,4 @@ extract_stickers.py
 # Generated print artifacts (regenerate with print_export.py + render_pdfs.sh)
 print/
 pdf/
+pdf-cmyk/
