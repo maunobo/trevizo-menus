@@ -332,9 +332,10 @@ def render_edge_band(cfg: dict) -> str:
 
 
 def render_logo(mascot_class: str, logo_color: str) -> str:
-    # -resize PNGs are cropped tight to the mascot; the originals had ~30% transparent padding
-    # that made the drawing appear small inside the CSS box even when the box was sized correctly.
-    src = f"assets/trevizo-logo-{logo_color}-resize.png"
+    # -hires PNGs derive from the designer's high-res clean logo (background knocked out):
+    #   vermilion = the orange croc (cream-paper menus); cream = luminance-remapped light croc
+    #   (dark-flood menus). See make_cream_logo.py.
+    src = f"assets/trevizo-logo-{logo_color}-hires.png"
     return (
         f'<div class="logo-mascot {mascot_class}">'
         f'<img src="{src}" alt="Trevizo mascot">'
@@ -424,10 +425,11 @@ def render_side(
     if "edge-band" in en_side.flags:
         parts.append(render_edge_band(cfg))
 
-    # Mascot
+    # Mascot. Spirits back is special — its mascot is placed INSIDE the grid as the 6th box
+    # (balanced with Tequila), so skip the absolute one here.
     if is_front and cfg.get("front_mascot"):
         parts.append(render_logo(cfg["front_mascot"], cfg["logo"]))
-    if not is_front and cfg.get("back_mascot"):
+    if not is_front and cfg.get("back_mascot") and cfg["slug"] != "spirits":
         parts.append(render_logo(cfg["back_mascot"], cfg["logo"]))
 
     # Sticker variant overlays (hidden unless body.variant-stickers is set)
@@ -454,23 +456,28 @@ def render_side(
     )
 
     if has_columns:
-        # Spirits back 2-col grid
-        left = [
-            render_section(es, gs, cfg)
-            for es, gs in zip(en_side.sections, gr_side.sections)
-            if "column-left" in es.flags
-        ]
-        right = [
-            render_section(es, gs, cfg)
-            for es, gs in zip(en_side.sections, gr_side.sections)
-            if "column-right" in es.flags
-        ]
-        grid = (
-            '<div class="spirits-grid">'
-            f'<div class="left-col">{"".join(left)}</div>'
-            f'<div class="right-col">{"".join(right)}</div>'
-            "</div>"
-        )
+        # Spirits back: explicit 2-col × N-row grid. Each section is placed in its (column, row)
+        # cell so CSS grid sizes each row to its tallest cell — the second sections (Rum / Whiskey)
+        # then start at the same baseline across columns. (Vodka, being shorter than Gin, simply gets
+        # a little extra space below it; that's the trade-off for aligning the row-2 headers.)
+        cells = []
+        row_l = row_r = 0
+        for es, gs in zip(en_side.sections, gr_side.sections):
+            sec = render_section(es, gs, cfg)
+            if "column-left" in es.flags:
+                row_l += 1
+                cells.append(f'<div style="grid-column:1;grid-row:{row_l};">{sec}</div>')
+            elif "column-right" in es.flags:
+                row_r += 1
+                cells.append(f'<div style="grid-column:2;grid-row:{row_r};">{sec}</div>')
+        # 6th box: the mascot, in column 2 on the same row as Tequila (column 1) — a balanced 3×2.
+        if cfg.get("back_mascot"):
+            cells.append(
+                f'<div style="grid-column:2;grid-row:{row_l};" class="spirits-mascot-cell">'
+                f'<img src="assets/trevizo-logo-{cfg["logo"]}-hires.png" alt="Trevizo mascot">'
+                f"</div>"
+            )
+        grid = f'<div class="spirits-grid">{"".join(cells)}</div>'
         inner_parts.append(grid)
     elif cfg.get("has_col_header") and is_front:
         # Wines front: title → rule → col-header → sections.
@@ -650,7 +657,13 @@ STYLES = """
   body.revisions-on [data-revision="proposed"] .wordmark { font-size: 14px; letter-spacing: 0.5em; padding-left: 0.5em; }
   body.revisions-on [data-revision="proposed"] .wines .title { font-size: 32px; }
   body.revisions-on [data-revision="proposed"] .cocktails .page.front .title { font-size: 36px; }
-  body.revisions-on [data-revision="proposed"] .food .page.front .title { font-size: 40px; }
+  /* Food front: more breathing room around the title (gap from the TREVIZO wordmark above and the
+     first section below). The page is dense (mascot + 5 items + kitchen-hours + footer), so the
+     mascot is a touch smaller / higher to make room for the title margins without overflowing.
+     Food-only — does not affect the other menus. */
+  body.revisions-on [data-revision="proposed"] .food .front-mascot { width: 78px; height: 99px; top: 16px; }
+  body.revisions-on [data-revision="proposed"] .food .page.front { padding-top: 126px; }
+  body.revisions-on [data-revision="proposed"] .food .page.front .title { font-size: 40px; margin-top: 16px; margin-bottom: 16px; }
   body.revisions-on [data-revision="proposed"] .brunch .page.front .title { font-size: 42px; }
   body.revisions-on [data-revision="proposed"] .spirits .page.front .title { font-size: 28px; }
   body.revisions-on [data-revision="proposed"] .spirits .page.back .title { font-size: 40px; }
@@ -768,7 +781,8 @@ STYLES = """
   .wines .title { font-size: 50px; margin-top: 8px; }
   .wines .rule { background: #F5EEDF; }
   .wines .item-region { color: #F5EEDF; }
-  .wines .corner-mascot { bottom: 24px; right: 22px; width: 88px; height: 112px; }
+  /* Raised to sit in the gap between the Red section and the footer (was tucked low near the footer). */
+  .wines .corner-mascot { bottom: 70px; right: 24px; width: 96px; height: 118px; }
   /* Wines back: vertically center the Rosé + Champagne lists with extra section gap — mirrors the Cocktails back layout. */
   .wines .page.back { display: flex; flex-direction: column; justify-content: center; padding-top: 28px; padding-bottom: 50px; }
   .wines .page.back .section:first-of-type { margin-top: 0; }
@@ -837,16 +851,14 @@ STYLES = """
   .spirits .page.front .section:first-of-type { margin-top: 24px; }
   .spirits .rule { background: #F5EEDF; }
   .spirits .front-mascot { top: 24px; left: 50%; transform: translateX(-50%); width: 104px; height: 131px; }
-  /* Spirits back mascot: positioned more centrally in the right-column empty space below Whiskey,
-     instead of tucked into the bottom-right corner. Moves up + leftward to fill the whitespace. */
-  .spirits .corner-mascot { bottom: 100px; right: 70px; width: 104px; height: 131px; }
-
-  .spirits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 14px; }
-  .spirits .spirits-grid .section:first-of-type { margin-top: 0; }
-  /* Right col content aligns to top (Vodka level with Gin) — was justify-content: center which made Vodka float. */
-  .spirits .right-col { display: flex; flex-direction: column; justify-content: flex-start; }
-  .spirits .right-col .section { padding-right: 14px; }
-  .spirits .right-col .section:first-of-type { margin-top: 0; }
+  /* Spirits back: explicit 2-col grid with sections placed per (column, row). align-items: start
+     sizes each row to its tallest cell, so the row-2 headers (Rum / Whiskey) line up across columns. */
+  .spirits-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; row-gap: 12px; align-items: start; margin-top: 14px; }
+  .spirits .spirits-grid .section { margin-top: 0; }
+  .spirits .spirits-grid > [style*="grid-column:2"] .section { padding-right: 14px; }
+  /* The mascot is the 6th grid box (row 3, right) — centred in its cell, balanced with Tequila. */
+  .spirits-mascot-cell { display: flex; align-items: center; justify-content: center; }
+  .spirits-mascot-cell img { width: 118px; height: auto; display: block; }
 """
 
 SCRIPT = """

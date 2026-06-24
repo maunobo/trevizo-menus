@@ -21,7 +21,7 @@ Fontant Merlot | 7 / 30 € | Languedoc-Roussillon · France
 Lungarotti | — / 24 € | Sangiovese · Torgiano · Umbria · Italy
 Gai'a Wines | — / 34 € | Agiorgitiko · Nemea PDO · Greece
 
-> Continued overleaf
+> Nea Penteli · @trevizo.spritzeria
 
 ## Side: Back
 
@@ -54,7 +54,7 @@ Americano | 9 € | Campari · Del Professore Vermouth Rosso · Soda
 Negroni | 10 € | Bickens London Dry Gin · Campari · Del Professore Vermouth Rosso
 Crodino Spritz {non-alcoholic} | 8 € | Crodino 0% Alcohol · Soda
 
-> Continued overleaf
+> Nea Penteli · @trevizo.spritzeria
 
 ## Side: Back {centered}
 
@@ -90,7 +90,7 @@ Burrata | 10 € | Burrata · Pomodorini · Fresh Basil · Balsamic Cream
 Il Giardino | 9 € | Seasonal Mixed Greens · Orange · Parmesan · Walnuts · Balsamic
 Insalata di Fragole | 9 € | Prosciutto · Seasonal Mixed Greens · Strawberries · Gorgonzola · Strawberry Vinaigrette · Walnuts
 
-> Continued overleaf
+> Nea Penteli · @trevizo.spritzeria
 
 ## Side: Back
 
@@ -126,7 +126,7 @@ Ciabatta Prosciutto | 9 € | Prosciutto Parma · Pesto · Mozzarella · Pomodor
 Ciabatta Avocado & Mozzarella | 9 € | Avocado · Pomodoro · Mozzarella · Olive Oil
 Focaccia Milano | 9 € | Salami Milano · Pomodoro · Truffle Cream · Pecorino Romano · Rocket
 
-> Continued overleaf
+> Nea Penteli · @trevizo.spritzeria
 
 ## Side: Back {centered, edge-band}
 
@@ -194,7 +194,7 @@ Fischer Lager | 5 € |
 Heineken 0% | 5 € |
 Dathènes | 6 € |
 
-> Spirits overleaf
+> Nea Penteli · @trevizo.spritzeria
 
 ## Side: Back
 

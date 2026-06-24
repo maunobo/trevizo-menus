@@ -41,7 +41,7 @@ Fontant Merlot | 7 / 30 € | Languedoc-Roussillon · France
 Lungarotti | — / 24 € | Sangiovese · Torgiano · Umbria · Italy
 Gai'a Wines | — / 34 € | Agiorgitiko · Nemea PDO · Greece
 
-> Continued overleaf
+> Nea Penteli · @trevizo.spritzeria
 
 ## Side: Back
 
@@ -74,7 +74,7 @@ Americano | 10 € | Campari · Del Professore Vermouth Rosso · Soda Water
 Negroni | 10 € | Beckett's London Dry Gin · Campari · Del Professore Vermouth Rosso
 Crodino Spritz {non-alcoholic} | 8 € | Crodino 0% Alcohol · Soda Water
 
-> Continued overleaf
+> Nea Penteli · @trevizo.spritzeria
 
 ## Side: Back {centered}
 
@@ -109,7 +109,7 @@ Baked Focaccia | 2,50 € | Rosemary · Sea Salt (4 pcs)
 Pomodoro {6 pcs} | 9 € | Pesto · Burrata · Pomodorini
 Parma {6 pcs} | 9 € | Prosciutto Parma · Pomodoro · Parmesan · Rocket · Truffle Oil
 
-> Continued overleaf
+> Nea Penteli · @trevizo.spritzeria
 
 ## Side: Back
 
@@ -148,7 +148,7 @@ Ciabatta Prosciutto | 9 € | Prosciutto Parma · Pesto · Mozzarella · Pomodor
 Ciabatta Avo & Mozzarella | 8,50 € | Avocado · Pomodoro · Mozzarella · Olive Oil
 Focaccia Milano | 9 € | Salami Milano · Truffle Cream · Pecorino Romano · Rocket
 
-> Continued overleaf
+> Nea Penteli · @trevizo.spritzeria
 
 ## Side: Back {centered, edge-band}
 
@@ -219,7 +219,7 @@ Heineken 0% | 5 € |
 // Brand: Dathènes Beer (dathenesbeer.com).
 Dathènes | 6 € |
 
-> Spirits overleaf
+> Nea Penteli · @trevizo.spritzeria
 
 ## Side: Back
 

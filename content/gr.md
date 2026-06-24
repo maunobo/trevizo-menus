@@ -31,7 +31,7 @@ Fontant Merlot | 7 / 30 € | Languedoc-Roussillon · Γαλλία
 Lungarotti | — / 24 € | Sangiovese · Torgiano · Umbria · Ιταλία
 Gai'a Wines | — / 34 € | Αγιωργίτικο · Νεμέα ΠΟΠ · Ελλάδα
 
-> Συνέχεια στην πίσω σελίδα
+> Νέα Πεντέλη · @trevizo.spritzeria
 
 ## Side: Back
 
@@ -64,7 +64,7 @@ Americano | 10 € | Campari · Del Professore Vermouth Rosso · Σόδα
 Negroni | 10 € | Beckett's London Dry Gin · Campari · Del Professore Vermouth Rosso
 Crodino Spritz {χωρίς αλκοόλ} | 8 € | Crodino 0% Αλκοόλ · Σόδα
 
-> Συνέχεια στην πίσω σελίδα
+> Νέα Πεντέλη · @trevizo.spritzeria
 
 ## Side: Back {centered}
 
@@ -99,7 +99,7 @@ Baked Focaccia | 2,50 € | Δεντρολίβανο · Θαλασσινό Αλ�
 Pomodoro {6 τεμ.} | 9 € | Pesto · Burrata · Pomodorini
 Parma {6 τεμ.} | 9 € | Prosciutto Parma · Pomodoro · Παρμεζάνα · Ρόκα · Λάδι Τρούφας
 
-> Συνέχεια στην πίσω σελίδα
+> Νέα Πεντέλη · @trevizo.spritzeria
 
 ## Side: Back
 
@@ -139,7 +139,7 @@ Ciabatta Prosciutto | 9 € | Prosciutto Parma · Pesto · Mozzarella · Pomodor
 Ciabatta Avo & Mozzarella | 8,50 € | Αβοκάντο · Pomodoro · Mozzarella · Ελαιόλαδο
 Focaccia Milano | 9 € | Salami Milano · Κρέμα Τρούφας · Pecorino Romano · Ρόκα
 
-> Συνέχεια στην πίσω σελίδα
+> Νέα Πεντέλη · @trevizo.spritzeria
 
 ## Side: Back {centered, edge-band}
 
@@ -210,7 +210,7 @@ Heineken 0% | 5 € |
 // Brand: Dathènes Beer (dathenesbeer.com).
 Dathènes | 6 € |
 
-> Spirits στην πίσω σελίδα
+> Νέα Πεντέλη · @trevizo.spritzeria
 
 ## Side: Back
 

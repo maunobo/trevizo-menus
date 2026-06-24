@@ -21,7 +21,7 @@ Fontant Merlot | 7 / 30 € | Languedoc-Roussillon · Γαλλία
 Lungarotti | — / 24 € | Sangiovese · Torgiano · Umbria · Ιταλία
 Gai'a Wines | — / 34 € | Αγιωργίτικο · Νεμέα ΠΟΠ · Ελλάδα
 
-> Συνέχεια στην πίσω σελίδα
+> Νέα Πεντέλη · @trevizo.spritzeria
 
 ## Side: Back
 
@@ -54,7 +54,7 @@ Americano | 9 € | Campari · Del Professore Vermouth Rosso · Σόδα
 Negroni | 10 € | Bickens London Dry Gin · Campari · Del Professore Vermouth Rosso
 Crodino Spritz {χωρίς αλκοόλ} | 8 € | Crodino 0% Αλκοόλ · Σόδα
 
-> Συνέχεια στην πίσω σελίδα
+> Νέα Πεντέλη · @trevizo.spritzeria
 
 ## Side: Back {centered}
 
@@ -90,7 +90,7 @@ Burrata | 10 € | Burrata · Pomodorini · Φρέσκος Βασιλικός ·
 Il Giardino | 9 € | Ανάμεικτα Πράσινα Λαχανικά · Πορτοκάλι · Παρμεζάνα · Καρύδια · Βαλσάμικο
 Insalata di Fragole | 9 € | Prosciutto · Ανάμεικτα Πράσινα Λαχανικά · Φράουλες · Gorgonzola · Vinaigrette Φράουλας · Καρύδια
 
-> Συνέχεια στην πίσω σελίδα
+> Νέα Πεντέλη · @trevizo.spritzeria
 
 ## Side: Back
 
@@ -126,7 +126,7 @@ Ciabatta Prosciutto | 9 € | Prosciutto Parma · Pesto · Mozzarella · Pomodor
 Ciabatta Avocado & Mozzarella | 9 € | Αβοκάντο · Pomodoro · Mozzarella · Ελαιόλαδο
 Focaccia Milano | 9 € | Salami Milano · Pomodoro · Κρέμα Τρούφας · Pecorino Romano · Ρόκα
 
-> Συνέχεια στην πίσω σελίδα
+> Νέα Πεντέλη · @trevizo.spritzeria
 
 ## Side: Back {centered, edge-band}
 
@@ -194,7 +194,7 @@ Fischer Lager | 5 € |
 Heineken 0% | 5 € |
 Dathènes | 6 € |
 
-> Spirits στην πίσω σελίδα
+> Νέα Πεντέλη · @trevizo.spritzeria
 
 ## Side: Back
 
