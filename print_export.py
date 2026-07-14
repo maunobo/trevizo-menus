@@ -87,7 +87,7 @@ def render_print_doc(menu_en, menu_gr, cfg, lang: str) -> str:
   <meta charset="UTF-8">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Archivo+Black&family=Noto+Serif+Display:ital,wght@0,700;0,900;1,700;1,900&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&family=Archivo+Black&family=Noto+Serif+Display:ital,wght@0,700;0,900;1,700;1,900&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
   <style>{build.STYLES}</style>
   <style>{print_css(cfg["format"])}</style>
 </head>

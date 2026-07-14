@@ -72,16 +72,16 @@ MENU_CONFIG = [
         "page_class": "a5 brunch",
         "format": "A5",
         "color_label": "cream + dusk blue edge band",
-        "meta_en": "A5 · cream paper · dusk blue edge band w/ SAT·SUN·10:00—16:00",
-        "meta_gr": "A5 · κρεμ χαρτί · μπλε edge band με ΣΑΒ·ΚΥΡ·10:00—16:00",
+        "meta_en": "A5 · cream paper · dusk blue edge band w/ SAT·SUN·14:00—19:00",
+        "meta_gr": "A5 · κρεμ χαρτί · μπλε edge band με ΣΑΒ·ΚΥΡ·14:00—19:00",
         "logo": "vermilion",
         "front_mascot": "front-mascot",
         "back_mascot": None,
         "desc_class": "item-desc",
         "title_class": "",
         "has_col_header": False,
-        "edge_band_text_en": "SAT · SUN · 10:00 — 16:00",
-        "edge_band_text_gr": "ΣΑΒ · ΚΥΡ · 10:00 — 16:00",
+        "edge_band_text_en": "SAT · SUN · 14:00 — 19:00",
+        "edge_band_text_gr": "ΣΑΒ · ΚΥΡ · 14:00 — 19:00",
     },
     {
         "slug": "spirits",
@@ -343,6 +343,30 @@ def render_logo(mascot_class: str, logo_color: str) -> str:
     )
 
 
+# ─── Language badge ─────────────────────────────────────────────────────
+# A small UK-flag chip marking the ENGLISH print set (3 sets) apart from the Greek (20 sets).
+# Rendered on every card but hidden via CSS unless body[data-lang="en"], so it shows only on the
+# English preview / the -en print files. Inline SVG (not an emoji) so it stays crisp/vector in print.
+_BADGE_SEQ = 0
+
+
+def render_lang_badge() -> str:
+    global _BADGE_SEQ
+    _BADGE_SEQ += 1
+    cid = f"ukclip{_BADGE_SEQ}"  # unique per badge so clip-path refs never collide
+    flag = (
+        '<svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="English">'
+        f'<clipPath id="{cid}"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>'
+        '<rect width="60" height="30" fill="#012169"/>'
+        '<path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>'
+        f'<path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#{cid})" stroke="#C8102E" stroke-width="4"/>'
+        '<path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/>'
+        '<path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/>'
+        "</svg>"
+    )
+    return f'<div class="lang-fold">{flag}</div>'
+
+
 # ─── Sticker variant overlays ───────────────────────────────────────────
 # Optional risograph sticker accents per menu/side. Hidden by default;
 # revealed when body.variant-stickers is set via the dev toggle.
@@ -400,7 +424,15 @@ def render_stickers(slug: str, is_front: bool) -> str:
 def render_footer(en_side: Side, gr_side: Side) -> str:
     if not en_side.footer:
         return ""
-    return f'<div class="footer">{i18n(en_side.footer, gr_side.footer or en_side.footer)}</div>'
+    # A footer may carry a "||" token to force a line break (e.g. a tagline stacked over the handle).
+    def fmt(s: str) -> str:
+        return "<br>".join(escape(part.strip()) for part in s.split("||"))
+    en_h = fmt(en_side.footer)
+    gr_h = fmt(gr_side.footer or en_side.footer)
+    inner = en_h if en_h == gr_h else (
+        f'<span class="lang-en">{en_h}</span><span class="lang-gr">{gr_h}</span>'
+    )
+    return f'<div class="footer">{inner}</div>'
 
 
 def render_side(
@@ -434,6 +466,9 @@ def render_side(
 
     # Sticker variant overlays (hidden unless body.variant-stickers is set)
     parts.append(render_stickers(cfg["slug"], is_front))
+
+    # English-set marker (top-right). Hidden unless body[data-lang="en"] — Greek sets stay unmarked.
+    parts.append(render_lang_badge())
 
     # Inner page
     inner_parts: list[str] = []
@@ -487,7 +522,7 @@ def render_side(
             for es, gs in zip(en_side.sections, gr_side.sections)
         )
         inner_parts.append(
-            f'<div style="margin-top: 10px;">'
+            f'<div style="margin-top: 6px;">'
             f'<div class="rule"></div>'
             f'{render_col_header(cfg)}'
             f'{sections_html}'
@@ -510,15 +545,6 @@ def render_side(
             inner_parts.append(f'<div class="sections-wrap">{sections_html}</div>')
         else:
             inner_parts.append(sections_html)
-
-    # Kitchen hours — Food front only, sits just above the footer.
-    if cfg["slug"] == "food" and is_front:
-        inner_parts.append(
-            '<div class="kitchen-hours">'
-            '<span class="lang-en">Kitchen open until 23:00</span>'
-            '<span class="lang-gr">Η κουζίνα λειτουργεί έως 23:00</span>'
-            "</div>"
-        )
 
     # Footer
     inner_parts.append(render_footer(en_side, gr_side))
@@ -565,7 +591,7 @@ def render_menu(idx: int, en_menu: Menu, gr_menu: Menu) -> str:
 STYLES = """
   * { margin: 0; padding: 0; box-sizing: border-box; }
   /* Theme: dark by default; body[data-theme="light"] flips the preview chrome (menus themselves keep their flood colors). */
-  html, body { background: #0d0d0d; min-height: 100vh; font-family: 'Archivo', sans-serif; color: #ddd; transition: background-color 0.2s, color 0.2s; }
+  html, body { background: #0d0d0d; min-height: 100vh; font-family: 'Noto Sans', sans-serif; color: #ddd; transition: background-color 0.2s, color 0.2s; }
   body { padding: 32px 24px 80px; }
 
   body[data-theme="light"] { background: #f4f1ea; color: #2a2724; }
@@ -590,13 +616,13 @@ STYLES = """
   .top p { color: #999; font-size: 13px; line-height: 1.6; max-width: 900px; }
   .top strong { color: #F5EEDF; }
   .top em { color: #E63C2E; font-style: normal; font-weight: 500; }
-  .top .tag { display: inline-block; padding: 3px 9px; border-radius: 999px; background: #1a1a1a; border: 1px solid #2a2a2a; color: #888; font-family: 'Archivo', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 8px; }
+  .top .tag { display: inline-block; padding: 3px 9px; border-radius: 999px; background: #1a1a1a; border: 1px solid #2a2a2a; color: #888; font-family: 'Noto Sans', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 8px; }
   /* min-height sized for the longer GR text (2 lines) so toggling EN↔GR doesn't reflow the menus below. */
   .top .preview-note { margin-top: 14px; padding: 12px 16px; background: #1a1a1a; border-left: 3px solid #E8A23D; border-radius: 0 4px 4px 0; color: #c8c2b3; font-size: 12px; line-height: 1.55; min-height: 64px; box-sizing: border-box; }
   .top .preview-note strong { color: #E8A23D; }
 
   .controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 24px 0 32px; position: sticky; top: 0; z-index: 100; padding: 8px 0; background: linear-gradient(to bottom, #0d0d0d 0%, #0d0d0d 60%, rgba(13,13,13,0.85) 100%); }
-  .controls button { padding: 9px 16px; background: transparent; color: #aaa; border: 1px solid #444; border-radius: 999px; font-family: 'Archivo', sans-serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.15s ease; }
+  .controls button { padding: 9px 16px; background: transparent; color: #aaa; border: 1px solid #444; border-radius: 999px; font-family: 'Noto Sans', sans-serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.15s ease; }
   .controls button:hover { color: #fff; border-color: #888; }
   .controls button.active { background: #E63C2E; border-color: #E63C2E; color: #fff; }
   .controls .lang-toggle { display: inline-flex; border: 1px solid #444; border-radius: 999px; overflow: hidden; }
@@ -658,7 +684,7 @@ STYLES = """
   body.revisions-on [data-revision="proposed"] .wines .title { font-size: 32px; }
   body.revisions-on [data-revision="proposed"] .cocktails .page.front .title { font-size: 36px; }
   /* Food front: more breathing room around the title (gap from the TREVIZO wordmark above and the
-     first section below). The page is dense (mascot + 5 items + kitchen-hours + footer), so the
+     first section below). The page carries mascot + 5 items + footer, so the
      mascot is a touch smaller / higher to make room for the title margins without overflowing.
      Food-only — does not affect the other menus. */
   body.revisions-on [data-revision="proposed"] .food .front-mascot { width: 78px; height: 99px; top: 16px; }
@@ -701,13 +727,13 @@ STYLES = """
 
   .row { max-width: 1500px; margin: 0 auto 50px; }
   .row-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 18px; padding: 6px 0 6px 14px; border-left: 3px solid #E63C2E; }
-  .row-num { font-family: 'Archivo', monospace; font-size: 13px; color: #E63C2E; letter-spacing: 0.2em; font-weight: 600; }
+  .row-num { font-family: 'Noto Sans', monospace; font-size: 13px; color: #E63C2E; letter-spacing: 0.2em; font-weight: 600; }
   .row-title { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; font-size: 22px; color: #F5EEDF; }
-  .row-meta { font-family: 'Archivo', monospace; font-size: 11px; color: #777; letter-spacing: 0.12em; text-transform: uppercase; margin-left: auto; }
+  .row-meta { font-family: 'Noto Sans', monospace; font-size: 11px; color: #777; letter-spacing: 0.12em; text-transform: uppercase; margin-left: auto; }
 
   .spread { display: flex; gap: 28px; flex-wrap: wrap; align-items: flex-start; }
   .page-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-  .page-label { font-family: 'Archivo', monospace; font-size: 10px; color: #777; letter-spacing: 0.2em; text-transform: uppercase; }
+  .page-label { font-family: 'Noto Sans', monospace; font-size: 10px; color: #777; letter-spacing: 0.2em; text-transform: uppercase; }
 
   .page-outer { position: relative; box-shadow: 0 8px 40px rgba(0,0,0,0.8); overflow: hidden; }
   .a5 { width: 370px; height: 518px; }
@@ -720,7 +746,7 @@ STYLES = """
   .guides { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.2s; z-index: 50; }
   .show-guides .guides { opacity: 1; }
   .trim-line { position: absolute; top: 7px; left: 7px; right: 7px; bottom: 7px; border: 1.5px dashed rgba(232, 162, 61, 0.85); }
-  .guide-label { position: absolute; font-family: 'Archivo', monospace; font-size: 9px; background: rgba(0,0,0,0.7); color: #E8A23D; padding: 2px 6px; border-radius: 2px; letter-spacing: 0.04em; }
+  .guide-label { position: absolute; font-family: 'Noto Sans', monospace; font-size: 9px; background: rgba(0,0,0,0.7); color: #E8A23D; padding: 2px 6px; border-radius: 2px; letter-spacing: 0.04em; }
   .guide-label.trim { top: 4px; left: 12px; }
 
   .logo-mascot { position: absolute; z-index: 2; pointer-events: none; }
@@ -728,18 +754,16 @@ STYLES = """
   .logo-mascot::after { content: ''; position: absolute; inset: 0; border: 1px dashed rgba(232, 162, 61, 0); border-radius: 2px; transition: border-color 0.2s; pointer-events: none; }
   .show-guides .logo-mascot::after { border-color: rgba(232, 162, 61, 0.65); background: rgba(232, 162, 61, 0.04); }
 
-  /* Typography — brand display serif is Noto Serif Display.
-     Decided 2026-05-26 after A/B vs Playfair Display: Noto Serif Display unifies EN + GR
-     rendering (Playfair has no Greek glyphs) and is available in Canva's default library. */
+  /* Typography — display serif is Noto Serif Display (titles + section headers); body sans is
+     Noto Sans (item names, prices, descriptions, footers, chrome). Both cover Greek + Latin, so
+     EN/GR render in one consistent typeface. (Archivo, the previous body font, has no Greek
+     glyphs — Greek fell back to a mismatched system font in print.) Wordmark stays Archivo Black. */
   .wordmark { font-family: 'Archivo Black', sans-serif; font-weight: 900; font-size: 11px; letter-spacing: 0.42em; text-align: center; padding-left: 0.42em; }
   .title { font-family: 'Noto Serif Display', serif; font-weight: 900; font-style: italic; line-height: 1; text-align: center; letter-spacing: -0.01em; }
   .title-roman { font-style: normal; letter-spacing: -0.005em; line-height: 0.95; }
   .title-stacked { line-height: 0.95; }
-  /* Kitchen hours line — sits just above the footer on Food front. Mirrors the footer's styling
-     so the two read as a stacked block at the bottom of the page. */
-  .kitchen-hours { position: absolute; bottom: 36px; left: 30px; right: 30px; text-align: center; font-family: 'Archivo', sans-serif; font-weight: 400; font-style: italic; font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; }
 
-  .col-header { display: flex; justify-content: flex-end; align-items: baseline; font-family: 'Archivo', sans-serif; font-weight: 500; font-size: 7px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.55; }
+  .col-header { display: flex; justify-content: flex-end; align-items: baseline; font-family: 'Noto Sans', sans-serif; font-weight: 500; font-size: 7px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.55; }
   .col-header span { padding-left: 0.8em; }
   .rule { height: 1px; opacity: 0.28; margin: 2px 0 4px; }
   .section { margin-top: 12px; }
@@ -747,12 +771,21 @@ STYLES = """
   .section-header { font-family: 'Noto Serif Display', serif; font-style: italic; font-weight: 700; font-size: 13px; margin-bottom: 4px; }
   .item { margin-bottom: 6px; }
   .item-row { display: grid; grid-template-columns: 1fr auto; column-gap: 8px; align-items: baseline; }
-  .item-name { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 9.5px; line-height: 1.25; }
+  .item-name { font-family: 'Noto Sans', sans-serif; font-weight: 600; font-size: 9.5px; line-height: 1.25; }
   .item-name .qty { font-weight: 400; font-style: italic; font-size: 8px; opacity: 0.7; margin-left: 0.2em; }
-  .item-price { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 9.5px; white-space: nowrap; font-feature-settings: "tnum"; }
-  .item-desc { font-family: 'Archivo', sans-serif; font-weight: 400; font-size: 8px; margin-top: 1px; line-height: 1.3; padding-right: 30px; }
-  .item-region { font-family: 'Archivo', sans-serif; font-weight: 400; font-size: 8px; margin-top: 1px; line-height: 1.3; padding-right: 30px; opacity: 0.7; }
-  .footer { position: absolute; bottom: 22px; left: 30px; right: 30px; text-align: center; font-family: 'Archivo', sans-serif; font-weight: 400; font-size: 7px; opacity: 0.55; letter-spacing: 0.18em; text-transform: uppercase; }
+  .item-price { font-family: 'Noto Sans', sans-serif; font-weight: 600; font-size: 9.5px; white-space: nowrap; font-feature-settings: "tnum"; }
+  .item-desc { font-family: 'Noto Sans', sans-serif; font-weight: 400; font-size: 8px; margin-top: 1px; line-height: 1.3; padding-right: 30px; }
+  .item-region { font-family: 'Noto Sans', sans-serif; font-weight: 400; font-size: 8px; margin-top: 1px; line-height: 1.3; padding-right: 30px; opacity: 0.7; }
+  .footer { position: absolute; bottom: 22px; left: 30px; right: 30px; text-align: center; font-family: 'Noto Sans', sans-serif; font-weight: 400; font-size: 7px; opacity: 0.55; letter-spacing: 0.18em; text-transform: uppercase; }
+
+  /* English-set flag ribbon — a diagonal band across the top-right corner showing the top ~50% of a
+     45°-tilted Union Jack, with the card's own colour on either side. Shown only on English cards;
+     the Greek sets stay unmarked. The card's overflow:hidden clips the ribbon's overhanging ends. */
+  .lang-fold { position: absolute; top: 12px; right: -61px; width: 152px; height: 36px; z-index: 6; display: none;
+    overflow: hidden; transform: rotate(45deg); transform-origin: center; }
+  body[data-lang="en"] .lang-fold { display: block; }
+  .lang-fold svg { position: absolute; top: 0; left: 0; width: 100%; height: 200%; display: block; }
+  .a4 .lang-fold { top: 22px; right: -80px; width: 210px; height: 48px; }
 
   /* A4 spirits/beverages scaling — breathing room between items and sections (applies to both pages of menu 05). */
   .a4 .section { margin-top: 16px; }
@@ -761,7 +794,7 @@ STYLES = """
   .a4 .item-name { font-weight: 500; }
   .a4 .footer { bottom: 18px; left: 40px; right: 40px; }
   .a4 .iced-tea-flavors { padding-left: 6px; break-inside: avoid; }
-  .a4 .iced-tea-flavor { font-family: 'Archivo', sans-serif; font-weight: 400; font-style: italic; font-size: 7.5px; opacity: 0.78; line-height: 1.4; margin-bottom: 0; }
+  .a4 .iced-tea-flavor { font-family: 'Noto Sans', sans-serif; font-weight: 400; font-style: italic; font-size: 7.5px; opacity: 0.78; line-height: 1.4; margin-bottom: 0; }
   .a4 .iced-tea-flavor .item-name { font-weight: 400; font-style: italic; font-size: 7.5px; }
   .a4 .iced-tea-flavor .item-desc { font-size: 7px; opacity: 0.85; padding-right: 0; }
 
@@ -773,16 +806,23 @@ STYLES = """
      Toggle .colors-original on body reverts to the original deeper vermilion. */
   .brunch-edge-band { position: absolute; top: 0; left: 0; bottom: 0; width: 40px; background: #2C5687; z-index: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   body.colors-original .brunch-edge-band { background: #C8362E; }
-  .brunch-edge-band .vertical-text { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.32em; color: #F5EEDF; white-space: nowrap; transform: rotate(-90deg); transform-origin: center center; padding-left: 0.32em; }
+  .brunch-edge-band .vertical-text { font-family: 'Noto Sans', sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0.32em; color: #F5EEDF; white-space: nowrap; transform: rotate(-90deg); transform-origin: center center; padding-left: 0.32em; }
 
   /* ───── Per-menu treatments ───── */
-  .wines.page-outer { background: #5E2A2E; }
+  /* Bordeaux flood. Was #5E2A2E, but that prints very dark in CMYK (ink density/dot gain thins the
+     cream text) — lifted ~17% to #6E373B so the white text stays legible on the printed card. */
+  .wines.page-outer { background: #6E373B; }
   .wines .page { color: #F5EEDF; }
   .wines .title { font-size: 50px; margin-top: 8px; }
   .wines .rule { background: #F5EEDF; }
   .wines .item-region { color: #F5EEDF; }
+  /* Wines front is the fullest A5 page (7 whites + 4 reds). No footer on Side A (moved to Side B),
+     so pull the lists up off the default 28px top and tighten item spacing for bottom breathing room. */
+  .wines .page.front { padding-top: 28px; }
+  .wines .page.front .item { margin-bottom: 3.5px; }
+  .wines .page.front .section { margin-top: 9px; }
   /* Raised to sit in the gap between the Red section and the footer (was tucked low near the footer). */
-  .wines .corner-mascot { bottom: 70px; right: 24px; width: 96px; height: 118px; }
+  .wines .corner-mascot { bottom: 54px; right: 22px; width: 88px; height: 108px; }
   /* Wines back: vertically center the Rosé + Champagne lists with extra section gap — mirrors the Cocktails back layout. */
   .wines .page.back { display: flex; flex-direction: column; justify-content: center; padding-top: 28px; padding-bottom: 50px; }
   .wines .page.back .section:first-of-type { margin-top: 0; }
@@ -824,6 +864,9 @@ STYLES = """
   .food .item-desc { color: #5E2A2E; opacity: 0.8; }
   .food .item-region { color: #5E2A2E; }
   .food .front-mascot { top: 22px; left: 50%; transform: translateX(-50%); width: 88px; height: 112px; }
+  /* Food back is a full 4-section page (Bruschetta + Pinsa + Platter + Desserts) — pull content up
+     off the default 28px top so the last item (Dessert of the Day) clears the absolute footer. */
+  .food .page.back { padding-top: 10px; }
 
   .brunch.page-outer { background: #F5EEDF; }
   .brunch .page { color: #5E2A2E; padding-left: 60px; padding-right: 50px; }
@@ -840,24 +883,29 @@ STYLES = """
 
   .spirits.page-outer { background: #1F5F63; }
   .spirits .page { color: #F5EEDF; }
-  .spirits .page.front { padding-top: 175px; }
+  .spirits .page.front { padding-top: 150px; }
   /* Spirits back: title sits higher with a generous gap to the lists. Reduces the "bottom-heavy" feel
      while keeping the right column top-aligned with the left (Vodka level with Gin). */
   .spirits .page.back { padding-top: 28px; }
-  .spirits .page.back .spirits-grid { margin-top: 36px; }
+  .spirits .page.back .spirits-grid { margin-top: 28px; row-gap: 8px; }
+  /* The left column (Gin 8 + a Whiskey-height Rum row + Tequila 9) is the tallest; with Noto Sans's
+     taller rows the Tequila list would spill into the footer. Tighten the back's item/header spacing. */
+  .spirits .page.back .item { margin-bottom: 4.5px; }
+  .spirits .page.back .section-header { margin-bottom: 5px; }
   .spirits .title { margin-top: 8px; }
   .spirits .page.front .title { font-size: 34px; line-height: 1; white-space: nowrap; }
   .spirits .page.back .title { font-size: 50px; }
   .spirits .page.front .section:first-of-type { margin-top: 24px; }
   .spirits .rule { background: #F5EEDF; }
-  .spirits .front-mascot { top: 24px; left: 50%; transform: translateX(-50%); width: 104px; height: 131px; }
+  .spirits .front-mascot { top: 20px; left: 50%; transform: translateX(-50%); width: 92px; height: 116px; }
   /* Spirits back: explicit 2-col grid with sections placed per (column, row). align-items: start
      sizes each row to its tallest cell, so the row-2 headers (Rum / Whiskey) line up across columns. */
   .spirits-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; row-gap: 12px; align-items: start; margin-top: 14px; }
   .spirits .spirits-grid .section { margin-top: 0; }
   .spirits .spirits-grid > [style*="grid-column:2"] .section { padding-right: 14px; }
-  /* The mascot is the 6th grid box (row 3, right) — centred in its cell, balanced with Tequila. */
-  .spirits-mascot-cell { display: flex; align-items: center; justify-content: center; }
+  /* The mascot is the 6th grid box (row 3, right). Stretch the cell to the full row height and
+     center the croc within it, so it sits alongside the middle of the Tequila column, not up top. */
+  .spirits-mascot-cell { display: flex; align-items: center; justify-content: center; align-self: stretch; }
   .spirits-mascot-cell img { width: 118px; height: auto; display: block; }
 """
 
@@ -987,7 +1035,7 @@ def render_html(
   <title>Trevizo · Menu Preview</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Archivo+Black&family=Noto+Serif+Display:ital,wght@0,700;0,900;1,700;1,900&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&family=Archivo+Black&family=Noto+Serif+Display:ital,wght@0,700;0,900;1,700;1,900&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
   <style>{STYLES}</style>
 </head>
 <body data-lang="en" class="revisions-on">

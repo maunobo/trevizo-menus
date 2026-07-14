@@ -10,28 +10,29 @@ Structure matches `en-proposed.md` line-by-line.
 ## Side: Front
 
 ### Λευκά
-Viña Esmeralda | 7,50 / 32 € | Moscat · Gewürztraminer · Ισπανία
-Fontant Sauvignon Blanc | 6 / 24 € | Languedoc-Roussillon · Γαλλία
-Ktima Gerovassiliou | 8,50 / 36 € | Μαλαγουζιά · Επανωμή · Θεσσαλονίκη
-Ktima Biblia Chora | — / 42 € | Ασσύρτικο · Sauvignon Blanc · Καβάλα
+Fortant de France | 6 / 24 € | Sauvignon Blanc · Languedoc · Γαλλία
+Campagnola | 6 / 24 € | Pinot Grigio · Veneto · Ιταλία
+Familia Torres – Viña Esmeralda | 7,50 / 32 € | Gewürztraminer · Moscatel · Catalunya · Ισπανία
+Lantides Estate – Ergo | — / 34 € | Sauvignon Blanc · Νεμέα · Ελλάδα
+Ktima Gerovassiliou | 8,50 / 38 € | Μαλαγουζιά · Επανωμή · Ελλάδα
+Ktima Biblia Chora | — / 42 € | Sauvignon Blanc · Ασσύρτικο · Παγγαίο · Ελλάδα
 Ktima Mouson 9 | — / 30 € | Trebbiano · Sauvignon Blanc · Ασσύρτικο · Βοιωτία
 
 ### Ερυθρά {pad-right}
-Fontant Merlot | 7 / 30 € | Languedoc-Roussillon · Γαλλία
-Lungarotti | — / 24 € | Sangiovese · Torgiano · Umbria · Ιταλία
-Gai'a Wines | — / 34 € | Αγιωργίτικο · Νεμέα ΠΟΠ · Ελλάδα
-
-> Νέα Πεντέλη · @trevizo.spritzeria
+Lungarotti Sangiovese | — / 24 € | Sangiovese · Umbria · Ιταλία
+Fortant de France Merlot | 7 / 30 € | Merlot · Languedoc · Γαλλία
+Kokkinos Estate Rooster | 7 / 32 € | Ξινόμαυρο · Merlot · Νάουσα · Ελλάδα
+Lantides Estate – Goldvine | — / 36 € | Cabernet Sauvignon · Νεμέα · Ελλάδα
 
 ## Side: Back
 
 ### Ροζέ
-Fontant Rosé | 6 / 24 € | Merlot · Languedoc-Roussillon · Γαλλία
-Viña Esmeralda Rosé | 7,50 / 32 € | Garnacha · Ισπανία
-Gaia Rosé 4-6 | 7,50 / 32 € | Αγιωργίτικο · Κορινθία
-Ktima Biblia Chora Rosé | — / 42 € | Syrah · Καβάλα · Ελλάδα
-Pétale de Rose | — / 48 € | Grenache · Cinsault · Mourvèdre · Provence · Γαλλία
-Domaine Ott. By Ott. Rosé | — / 58 € | Grenache · Provence · Γαλλία
+Fortant de France Merlot Rosé | 6 / 24 € | Merlot · Languedoc · Γαλλία
+Campagnola Rosé | 6 / 24 € | Pinot Grigio · Veneto · Ιταλία
+Familia Torres – Viña Esmeralda Rosé | 7,50 / 32 € | Grenache · Catalunya · Ισπανία
+Lantides Estate – Little Arc | — / 36 € | Μοσχοφίλερο · Νεμέα · Ελλάδα
+Régine Sumeire – Pétale de Rose | — / 50 € | Grenache · Cabernet Sauvignon · Mourvèdre · Provence · Γαλλία
+Domaine Ott – By Ott | — / 58 € | Grenache · Syrah · Mourvèdre · Provence · Γαλλία
 
 ### Σαμπάνια & Αφρώδη
 Grande Vento Prosecco DOC | 7 / 34 € | Glera · Veneto · Ιταλία
@@ -39,7 +40,7 @@ Truffle Hunter | 7 / 34 € | Moscato d'Asti · Langhe · Ιταλία
 Veuve Clicquot Yellow Brut | — / 210 € | Pinot Noir · Chardonnay · Meunier · Γαλλία
 Veuve Clicquot Rosé Brut | — / 240 € | Pinot Noir · Chardonnay · Meunier · Γαλλία
 
-> Σημειώσεις παλαίωσης κατόπιν αιτήματος
+> Σημειώσεις παλαίωσης κατόπιν αιτήματος || @trevizo.spritzeria
 
 ---
 
@@ -54,13 +55,13 @@ Americano | 9 € | Campari · Del Professore Vermouth Rosso · Σόδα
 Negroni | 10 € | Bickens London Dry Gin · Campari · Del Professore Vermouth Rosso
 Crodino Spritz {χωρίς αλκοόλ} | 8 € | Crodino 0% Αλκοόλ · Σόδα
 
-> Νέα Πεντέλη · @trevizo.spritzeria
+> @trevizo.spritzeria
 
 ## Side: Back {centered}
 
 ### Trevizo Spritz
 Pink Spritz | 10 € | Lillet Rose Aperitif · Σόδα Pink Grapefruit
-Fragola Spritz | 12 € | Campari · Sartì Rosa · Prosecco · Mondoro Prosecco · Elderflower · Σόδα Φράουλα
+Fragola Spritz | 12 € | Campari · Sartì Rosa · Prosecco · Mondoro · Elderflower · Σόδα Φράουλα
 Sole di Sicilia | 11 € | Aperol · Μανταρίνι · Κανέλα · Σόδα
 Limone Breeze | 12 € | Limoncello · Prosecco · Αγγούρι · Ginger Beer
 Negroni di Trevizo | 12 € | Bickens London Dry Gin · Campari · Del Professore Vermouth Rosso · Βασιλικός · Shiitake
@@ -73,7 +74,7 @@ Spank the Barrel | 12 € | Wild Turkey 101 Bourbon · Δημητριακά · B
 Guilty Tai | 12 € | Kingston 62 Rum · Εσπεριδοειδή · Αμύγδαλο · Λικέρ Πορτοκαλιού · Bitters · Λευκή Σοκολάτα
 Bad Influence | 12 € | Wild Turkey 101 Bourbon · Ιβίσκος · Angostura Bitters · Πορτοκάλι · Λεμόνι · Αφρός
 
-> Νέα Πεντέλη · @trevizo.spritzeria
+> @trevizo.spritzeria
 
 ---
 
@@ -82,21 +83,21 @@ Bad Influence | 12 € | Wild Turkey 101 Bourbon · Ιβίσκος · Angostura 
 ## Side: Front {centered}
 
 ### Συνοδευτικά Κρασιού
-Pomodorini & Mozzarella | 2,50 € | Γεμιστές Ελιές (2 τεμ.)
-Baked Focaccia | 2,50 € | Δεντρολίβανο · Θαλασσινό Αλάτι (4 τεμ.)
+Pomodorini & Mozzarella & Γεμιστές Ελιές | 2,50 € |
+Baked Focaccia με Δεντρολίβανο & Θαλασσινό Αλάτι | 2,50 € |
 
 ### Σαλάτες
-Burrata | 10 € | Burrata · Pomodorini · Φρέσκος Βασιλικός · Κρέμα Βαλσάμικου
-Il Giardino | 9 € | Ανάμεικτα Πράσινα Λαχανικά · Πορτοκάλι · Παρμεζάνα · Καρύδια · Βαλσάμικο
-Insalata di Fragole | 9 € | Prosciutto · Ανάμεικτα Πράσινα Λαχανικά · Φράουλες · Gorgonzola · Vinaigrette Φράουλας · Καρύδια
+Burrata | 10 € | Burrata · Pomodorini · Φρέσκος Βασιλικός · Πέστο · Κρέμα Βαλσάμικου
+Il Giardino | 9 € | Ανάμεικτα Πράσινα Λαχανικά · Πορτοκάλι · Παρμεζάνα · Καρύδια · Vinaigrette
+Insalata di Fragole | 10 € | Prosciutto · Ανάμεικτα Πράσινα Λαχανικά · Φράουλες · Gorgonzola · Vinaigrette Φράουλας · Καρύδια
 
-> Νέα Πεντέλη · @trevizo.spritzeria
+> @trevizo.spritzeria
 
 ## Side: Back
 
 ### Bruschetta
-Pomodoro {6 τεμ.} | 9 € | Pesto · Burrata · Pomodorini
-Parma {6 τεμ.} | 9 € | Prosciutto Parma · Pomodoro · Παρμεζάνα · Ρόκα · Λάδι Τρούφας
+Pomodoro {6 τεμ.} | 9 € | Pesto · Mozzarella · Pomodorini
+Parma {6 τεμ.} | 9 € | Prosciutto Parma · Pomodoro · Παρμεζάνα · Ρόκα · Κρέμα Τρούφας
 
 ### Pinsa Romana
 Burrata | 12 € | Salsa Pomodoro · Burrata · Pomodorini Tricolore · Φρέσκος Βασιλικός
@@ -104,16 +105,16 @@ Prosciutto | 12 € | Salsa Pomodoro · Prosciutto Parma · Mozzarella · Ρόκ
 Dante Inferno | 12 € | Salsa Pomodoro Piccante · Spianata Romana · Mozzarella
 Tartufo | 12 € | Κρέμα Τρούφας · Mozzarella · Porcini · Παρμεζάνα · Λάδι Τρούφας
 Trevizo Pistachio | 14 € | Pomodoro · Mortadella · Mozzarella · Burrata · Pesto Φιστικιού · Φρέσκο Φιστίκι
-Fichi e Gorgonzola | 14 € | Prosciutto · Κρέμα Παρμεζάνας · Gorgonzola · Chutney Σύκου · Αποξηραμένα Σύκα · Ρόκα · Πικάντικο Λάδι
+Fichi e Gorgonzola | 14 € | Prosciutto · Κρέμα Παρμεζάνας · Gorgonzola · Chutney Σύκου · Αποξηραμένα Σύκα · Ρόκα · Λάδι Τσίλι
 
 ### Πιατέλα Αλλαντικών
 Μικρή / Μεγάλη | 15 € / 25 € |
 
 ### Επιδόρπια
 Dolce Tentazione | 8 € | Pinsa · Πραλίνα · Petit Beurre
-Επιδόρπιο της Ημέρας | 8 € |
+Επιδόρπιο της Ημέρας | 9 € |
 
-> Νέα Πεντέλη · @trevizo.spritzeria
+> @trevizo.spritzeria
 
 ---
 
@@ -126,14 +127,14 @@ Ciabatta Prosciutto | 9 € | Prosciutto Parma · Pesto · Mozzarella · Pomodor
 Ciabatta Avocado & Mozzarella | 9 € | Αβοκάντο · Pomodoro · Mozzarella · Ελαιόλαδο
 Focaccia Milano | 9 € | Salami Milano · Pomodoro · Κρέμα Τρούφας · Pecorino Romano · Ρόκα
 
-> Νέα Πεντέλη · @trevizo.spritzeria
+> @trevizo.spritzeria
 
 ## Side: Back {centered, edge-band}
 
 ### Σαλάτες
-Burrata | 10 € | Burrata · Pomodorini · Φρέσκος Βασιλικός · Κρέμα Βαλσάμικου
-Il Giardino | 9 € | Ανάμεικτα Πράσινα Λαχανικά · Πορτοκάλι · Παρμεζάνα · Καρύδια · Βαλσάμικο
-Insalata di Fragole | 9 € | Prosciutto · Ανάμεικτα Πράσινα Λαχανικά · Φράουλες · Gorgonzola · Vinaigrette Φράουλας · Καρύδια
+Burrata | 10 € | Burrata · Pomodorini · Φρέσκος Βασιλικός · Πέστο · Κρέμα Βαλσάμικου
+Il Giardino | 9 € | Ανάμεικτα Πράσινα Λαχανικά · Πορτοκάλι · Παρμεζάνα · Καρύδια · Vinaigrette
+Insalata di Fragole | 10 € | Prosciutto · Ανάμεικτα Πράσινα Λαχανικά · Φράουλες · Gorgonzola · Vinaigrette Φράουλας · Καρύδια
 
 ### Pinsa
 Margherita | 10 € | Salsa Pomodoro · Mozzarella
@@ -143,9 +144,9 @@ Margherita | 10 € | Salsa Pomodoro · Mozzarella
 
 ### Επιδόρπια
 Dolce Tentazione | 8 € | Pinsa · Πραλίνα · Petit Beurre
-Επιδόρπιο της Ημέρας | 8 € |
+Επιδόρπιο της Ημέρας | 9 € |
 
-> Νέα Πεντέλη · @trevizo.spritzeria
+> @trevizo.spritzeria
 
 ---
 
@@ -194,7 +195,7 @@ Fischer Lager | 5 € |
 Heineken 0% | 5 € |
 Dathènes | 6 € |
 
-> Νέα Πεντέλη · @trevizo.spritzeria
+> @trevizo.spritzeria
 
 ## Side: Back
 
@@ -248,4 +249,4 @@ Jack Daniel's N°7 | 12 € |
 Talisker 10 Y.O. | 16 € |
 Lagavulin 12 Y.O. | 20 € |
 
-> Νέα Πεντέλη · Πλατεία Ηρώων Πολυτεχνείου 43 · @trevizo.spritzeria
+> Πλατεία Ηρώων Πολυτεχνείου 43 · @trevizo.spritzeria

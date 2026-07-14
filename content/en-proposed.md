@@ -10,28 +10,29 @@ When the "Show proposed revisions" toggle is on, this file's parsed content repl
 ## Side: Front
 
 ### White
-Viña Esmeralda | 7,50 / 32 € | Moscat · Gewürztraminer · Spain
-Fontant Sauvignon Blanc | 6 / 24 € | Languedoc-Roussillon · France
-Ktima Gerovassiliou | 8,50 / 36 € | Malagouzia · Epanomi · Thessaloniki
-Ktima Biblia Chora | — / 42 € | Assyrtiko · Sauvignon Blanc · Kavala
+Fortant de France | 6 / 24 € | Sauvignon Blanc · Languedoc · France
+Campagnola | 6 / 24 € | Pinot Grigio · Veneto · Italy
+Familia Torres – Viña Esmeralda | 7,50 / 32 € | Gewürztraminer · Moscatel · Catalunya · Spain
+Lantides Estate – Ergo | — / 34 € | Sauvignon Blanc · Nemea · Greece
+Ktima Gerovassiliou | 8,50 / 38 € | Malagouzia · Epanomi · Greece
+Ktima Biblia Chora | — / 42 € | Sauvignon Blanc · Assyrtiko · Pangaio · Greece
 Ktima Mouson 9 | — / 30 € | Trebbiano · Sauvignon Blanc · Assyrtiko · Voiotia
 
 ### Red {pad-right}
-Fontant Merlot | 7 / 30 € | Languedoc-Roussillon · France
-Lungarotti | — / 24 € | Sangiovese · Torgiano · Umbria · Italy
-Gai'a Wines | — / 34 € | Agiorgitiko · Nemea PDO · Greece
-
-> Nea Penteli · @trevizo.spritzeria
+Lungarotti Sangiovese | — / 24 € | Sangiovese · Umbria · Italy
+Fortant de France Merlot | 7 / 30 € | Merlot · Languedoc · France
+Kokkinos Estate Rooster | 7 / 32 € | Xinomavro · Merlot · Naoussa · Greece
+Lantides Estate – Goldvine | — / 36 € | Cabernet Sauvignon · Nemea · Greece
 
 ## Side: Back
 
 ### Rosé
-Fontant Rosé | 6 / 24 € | Merlot · Languedoc-Roussillon · France
-Viña Esmeralda Rosé | 7,50 / 32 € | Garnacha · Spain
-Gaia Rosé 4-6 | 7,50 / 32 € | Agiorgitiko · Korinthia
-Ktima Biblia Chora Rosé | — / 42 € | Syrah · Kavala · Greece
-Pétale de Rose | — / 48 € | Grenache · Cinsault · Mourvèdre · Provence · France
-Domaine Ott. By Ott. Rosé | — / 58 € | Grenache · Provence · France
+Fortant de France Merlot Rosé | 6 / 24 € | Merlot · Languedoc · France
+Campagnola Rosé | 6 / 24 € | Pinot Grigio · Veneto · Italy
+Familia Torres – Viña Esmeralda Rosé | 7,50 / 32 € | Grenache · Catalunya · Spain
+Lantides Estate – Little Arc | — / 36 € | Moschofilero · Nemea · Greece
+Régine Sumeire – Pétale de Rose | — / 50 € | Grenache · Cabernet Sauvignon · Mourvèdre · Provence · France
+Domaine Ott – By Ott | — / 58 € | Grenache · Syrah · Mourvèdre · Provence · France
 
 ### Champagne & Sparkling
 Grande Vento Prosecco DOC | 7 / 34 € | Glera · Veneto · Italy
@@ -39,7 +40,7 @@ Truffle Hunter | 7 / 34 € | Moscato d'Asti · Langhe · Italy
 Veuve Clicquot Yellow Brut | — / 210 € | Pinot Noir · Chardonnay · Meunier · France
 Veuve Clicquot Rosé Brut | — / 240 € | Pinot Noir · Chardonnay · Meunier · France
 
-> Vintage notes available on request
+> Vintage notes available on request || @trevizo.spritzeria
 
 ---
 
@@ -54,13 +55,13 @@ Americano | 9 € | Campari · Del Professore Vermouth Rosso · Soda
 Negroni | 10 € | Bickens London Dry Gin · Campari · Del Professore Vermouth Rosso
 Crodino Spritz {non-alcoholic} | 8 € | Crodino 0% Alcohol · Soda
 
-> Nea Penteli · @trevizo.spritzeria
+> @trevizo.spritzeria
 
 ## Side: Back {centered}
 
 ### Trevizo Spritz
 Pink Spritz | 10 € | Lillet Rose Aperitif · Pink Grapefruit Soda
-Fragola Spritz | 12 € | Campari · Sartì Rosa · Prosecco · Mondoro Prosecco · Elderflower · Strawberry Soda
+Fragola Spritz | 12 € | Campari · Sartì Rosa · Prosecco · Mondoro · Elderflower · Strawberry Soda
 Sole di Sicilia | 11 € | Aperol · Mandarin · Cinnamon · Soda
 Limone Breeze | 12 € | Limoncello · Prosecco · Cucumber · Ginger Beer
 Negroni di Trevizo | 12 € | Bickens London Dry Gin · Campari · Del Professore Vermouth Rosso · Basil · Shiitake
@@ -73,7 +74,7 @@ Spank the Barrel | 12 € | Wild Turkey 101 Bourbon · Cereal · Banoffee · Mel
 Guilty Tai | 12 € | Kingston 62 Rum · Citrus · Almond · Orange Liqueur · Bitters · White Chocolate
 Bad Influence | 12 € | Wild Turkey 101 Bourbon · Hibiscus · Angostura Bitters · Orange · Lemon · Foam
 
-> Nea Penteli · @trevizo.spritzeria
+> @trevizo.spritzeria
 
 ---
 
@@ -82,21 +83,21 @@ Bad Influence | 12 € | Wild Turkey 101 Bourbon · Hibiscus · Angostura Bitter
 ## Side: Front {centered}
 
 ### Wine Sides
-Pomodorini & Mozzarella | 2,50 € | Stuffed Olives (2 pcs)
-Baked Focaccia | 2,50 € | Rosemary · Sea Salt (4 pcs)
+Pomodorini & Mozzarella & Stuffed Olives | 2,50 € |
+Baked Focaccia with Rosemary & Sea Salt | 2,50 € |
 
 ### Salads
-Burrata | 10 € | Burrata · Pomodorini · Fresh Basil · Balsamic Cream
-Il Giardino | 9 € | Seasonal Mixed Greens · Orange · Parmesan · Walnuts · Balsamic
-Insalata di Fragole | 9 € | Prosciutto · Seasonal Mixed Greens · Strawberries · Gorgonzola · Strawberry Vinaigrette · Walnuts
+Burrata | 10 € | Burrata · Pomodorini · Fresh Basil · Pesto · Balsamic Cream
+Il Giardino | 9 € | Seasonal Mixed Greens · Orange · Parmesan · Walnuts · Vinaigrette
+Insalata di Fragole | 10 € | Prosciutto · Seasonal Mixed Greens · Strawberries · Gorgonzola · Strawberry Vinaigrette · Walnuts
 
-> Nea Penteli · @trevizo.spritzeria
+> @trevizo.spritzeria
 
 ## Side: Back
 
 ### Bruschetta
-Pomodoro {6 pcs} | 9 € | Pesto · Burrata · Pomodorini
-Parma {6 pcs} | 9 € | Prosciutto Parma · Pomodoro · Parmesan · Rocket · Truffle Oil
+Pomodoro {6 pcs} | 9 € | Pesto · Mozzarella · Pomodorini
+Parma {6 pcs} | 9 € | Prosciutto Parma · Pomodoro · Parmesan · Rocket · Truffle Cream
 
 ### Pinsa Romana
 Burrata | 12 € | Salsa Pomodoro · Burrata · Pomodorini Tricolore · Fresh Basil
@@ -111,9 +112,9 @@ Small / Large | 15 € / 25 € |
 
 ### Desserts
 Dolce Tentazione | 8 € | Pinsa · Praline · Petit Beurre
-Dessert of the Day | 8 € |
+Dessert of the Day | 9 € |
 
-> Nea Penteli · @trevizo.spritzeria
+> @trevizo.spritzeria
 
 ---
 
@@ -126,14 +127,14 @@ Ciabatta Prosciutto | 9 € | Prosciutto Parma · Pesto · Mozzarella · Pomodor
 Ciabatta Avocado & Mozzarella | 9 € | Avocado · Pomodoro · Mozzarella · Olive Oil
 Focaccia Milano | 9 € | Salami Milano · Pomodoro · Truffle Cream · Pecorino Romano · Rocket
 
-> Nea Penteli · @trevizo.spritzeria
+> @trevizo.spritzeria
 
 ## Side: Back {centered, edge-band}
 
 ### Salads
-Burrata | 10 € | Burrata · Pomodorini · Fresh Basil · Balsamic Cream
-Il Giardino | 9 € | Seasonal Mixed Greens · Orange · Parmesan · Walnuts · Balsamic
-Insalata di Fragole | 9 € | Prosciutto · Seasonal Mixed Greens · Strawberries · Gorgonzola · Strawberry Vinaigrette · Walnuts
+Burrata | 10 € | Burrata · Pomodorini · Fresh Basil · Pesto · Balsamic Cream
+Il Giardino | 9 € | Seasonal Mixed Greens · Orange · Parmesan · Walnuts · Vinaigrette
+Insalata di Fragole | 10 € | Prosciutto · Seasonal Mixed Greens · Strawberries · Gorgonzola · Strawberry Vinaigrette · Walnuts
 
 ### Pinsa
 Margherita | 10 € | Salsa Pomodoro · Mozzarella
@@ -143,9 +144,9 @@ Small / Large | 15 € / 25 € |
 
 ### Desserts
 Dolce Tentazione | 8 € | Pinsa · Praline · Petit Beurre
-Dessert of the Day | 8 € |
+Dessert of the Day | 9 € |
 
-> Nea Penteli · @trevizo.spritzeria
+> @trevizo.spritzeria
 
 ---
 
@@ -194,7 +195,7 @@ Fischer Lager | 5 € |
 Heineken 0% | 5 € |
 Dathènes | 6 € |
 
-> Nea Penteli · @trevizo.spritzeria
+> @trevizo.spritzeria
 
 ## Side: Back
 
@@ -248,4 +249,4 @@ Jack Daniel's N°7 | 12 € |
 Talisker 10 Y.O. | 16 € |
 Lagavulin 12 Y.O. | 20 € |
 
-> Nea Penteli · Plateia Iroon Politechniou 43 · @trevizo.spritzeria
+> Plateia Iroon Politechniou 43 · @trevizo.spritzeria
